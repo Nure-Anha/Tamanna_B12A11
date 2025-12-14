@@ -20,7 +20,7 @@ const Footer = () => {
                     <h6 className="footer_title_heading">CONTACT US</h6>
                     <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faEnvelope} /> support@lifedrop.com</a>
                     <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faLocationArrow} /> Road-2,3/A Middle Badda, <br />Dhaka-1212 , Bangladesh</a>
-                    <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faPhone} /> Cell: (+880) 1917896335</a>
+                    <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faPhone} /> Call: (+880) 1917896335</a>
                     
             </nav>
 

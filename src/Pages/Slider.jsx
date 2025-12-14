@@ -10,7 +10,7 @@ const Slider = () => {
             <>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                     <SwiperSlide>
-                        <img className='brightness-50' src="/public/myAssets/img01.jpg" alt="" />
+                        <img className='brightness-50' src="/myAssets/img01.jpg" alt="" />
                         
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-white">
@@ -29,7 +29,7 @@ const Slider = () => {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <img className='brightness-50' src="/public/myAssets/img03.jpg" alt="" />
+                        <img className='brightness-50' src="/myAssets/img03.jpg" alt="" />
 
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-white">
@@ -40,7 +40,7 @@ const Slider = () => {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <img className='brightness-50' src="/public/myAssets/img2.jpg" alt="" />
+                        <img className='brightness-50' src="/myAssets/img2.jpg" alt="" />
 
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-white">
