@@ -56,6 +56,7 @@ const Register = () => {
                     displayName: name, photoURL: mainPhotoURL
                     }).then(() => {
                     // Profile updated!
+
                     // registered user data post into db*******************************
                     axios.post("http://localhost:3000/users" , formData) 
                     .then(res => {
@@ -65,6 +66,7 @@ const Register = () => {
                         console.log("errRegUserData :" , errRegUserData.message) ;
                     })
                     // *****************************************************************
+                    
                     }).catch((error) => {
                     // An error occurred
                     console.log("ErrorMassege" , error.message) ;

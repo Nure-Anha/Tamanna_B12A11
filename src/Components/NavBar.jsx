@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Pages/Authentication/Auth/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../Pages/Authentication/Auth/FireBase.config';
 
 const NavBar = () => {
+
+    const {user} = useContext(AuthContext) ;
 
     // links 
     const links = <>
     <li className='font-bold text-base-content'><NavLink to={"/"}>Home</NavLink></li>
     <li className='font-bold text-base-content'><NavLink to={"/petsAndsupplies"}>Donation Requests</NavLink></li> </>
+
+    // handleLogout
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+        // Sign-out successful.
+        }).catch((error) => {
+        console.log(error) ;
+        });
+    }
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -41,7 +55,10 @@ const NavBar = () => {
 
                 <div className="navbar-end">
                     {/* <a className="btn border-red-600 hover:bg-red-600 hover:text-white">Login</a> */}
-                    <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
+                
+                {
+                    user ? (<div className='flex gap-x-5'><div className='tooltip tooltip-left'data-tip={user?.displayName}><img className='w-12 h-12 object-cover rounded-full' src={user?.photoURL} alt="" /></div> <button onClick={handleLogout} className="btn btn-neutral mt-1">Logout</button></div>) : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
+                }
                 </div>
             </div>
         </div>

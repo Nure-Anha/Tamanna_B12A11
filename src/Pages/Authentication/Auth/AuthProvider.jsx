@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from './FireBase.config';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import axios from 'axios';
 
 const AuthProvider = ({children}) => {
     // createUserWithEmailAndPassword:
@@ -25,8 +26,30 @@ const AuthProvider = ({children}) => {
                  console.log(error.message) ;
                 });
      }
+    //  Get the currently signed-in user
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, (curr_user) => {
+        setUser(curr_user) ;
+        });
+        return unsubscribe ;
+    }, [])
 
-    const authData = {regWithEmailPass , signInWithEmailPass ,}
+    // GetRole for specific email
+    const [role , setRole] = useState('') ;
+    useEffect(()=>{
+        if(!user) return ;
+             axios.get(`http://localhost:3000/users/role/${user?.email}`)
+            .then(res => {
+                console.log("matched email's role get:" , res.data.role) ;
+                setRole(res.data.role) ;
+            })
+            .catch(err => {
+                console.log("Error matched email", err) ;
+            }) 
+    } , [user])
+
+
+    const authData = {regWithEmailPass , signInWithEmailPass , user ,}
 
 
     return (
