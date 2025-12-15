@@ -10,6 +10,7 @@ import Home from './Pages/Home.jsx';
 import AuthProvider from './Pages/Authentication/Auth/AuthProvider.jsx';
 import Login from './Pages/Authentication/Login.jsx';
 import Register from './Pages/Authentication/Register.jsx';
+import DashboardLayout from './Layouts/DashboardLayout/DashboardLayout.jsx';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {index:true , Component:Home} ,
       {path:'register' , Component:Register} ,
       {path:'login' , Component:Login} ,
+      {path:'dashboardlayout' , Component:DashboardLayout} ,
     ]
   },
 ]);

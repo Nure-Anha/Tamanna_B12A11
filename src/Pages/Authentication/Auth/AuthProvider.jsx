@@ -14,7 +14,7 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, pass)
     }
     // updateProfile
-    const [user , setUser] = useState('') ;
+    const [user , setUser] = useState(null) ;
      const updateProfile = (name , photo) => {
         return updateProfile(auth.currentUser, {
                 displayName: name, photoURL: photo
@@ -34,22 +34,25 @@ const AuthProvider = ({children}) => {
         return unsubscribe ;
     }, [])
 
-    // GetRole for specific email
+
+    // My Get_Role functionality for specific email
     const [role , setRole] = useState('') ;
     useEffect(()=>{
-        if(!user) return ;
-             axios.get(`http://localhost:3000/users/role/${user?.email}`)
-            .then(res => {
-                console.log("matched email's role get:" , res.data.role) ;
-                setRole(res.data.role) ;
-            })
-            .catch(err => {
-                console.log("Error matched email", err) ;
-            }) 
+        if(!user) {
+            return ;
+        }
+        axios.get(`http://localhost:3000/users/${user?.email}`)
+        .then(res => {
+            console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
+            setRole(res.data.role) ;
+        })
+        .catch(err => {
+            console.log("Error matched email", err) ;
+        }) 
     } , [user])
 
 
-    const authData = {regWithEmailPass , signInWithEmailPass , user ,}
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role ,}
 
 
     return (

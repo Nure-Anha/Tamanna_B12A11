@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import { auth } from './Auth/FireBase.config';
@@ -8,6 +8,46 @@ import { updateProfile } from 'firebase/auth';
 const Register = () => {
 
     const {regWithEmailPass} = useContext(AuthContext) ;
+
+    
+
+    // District and Upazilla data load
+    const [districtData , setDistrictData] = useState([]) ;
+    const [upazillaData , setUpazillaData] = useState([]) ;
+    useEffect(()=>{
+        fetch("/myAssets/Data/districts.json")
+        .then(res => res.json()) 
+        .then(data => {
+            console.log("Fetched data of District.json: ", data[2]?.data) ;
+            setDistrictData(data[2]?.data) ;
+        })
+        fetch("/myAssets/Data/upazilas.json")
+        .then(res => res.json()) 
+        .then(data2 => {
+            console.log("Fetched data of Upazilla.json: ", data2[2]?.data) ;
+            setUpazillaData(data2[2]?.data) ;
+        })
+    } , [])
+
+    // handleSelectDistrict
+    const [selected_District , setSelected_District] = useState('') ;
+    const handleSelectDistrict = (e) => {
+        setSelected_District(e.target.value) ;
+    }
+    console.log("selected_District : ", selected_District) ;
+
+    // handleSelectUpazilla
+    const [seleted_Upazilla , setSeleted_Upazilla] = useState('') ;
+    const handleSelectUpazilla = (e) => {
+        setSeleted_Upazilla(e.target.value) ;
+    }
+    console.log("seleted_Upazilla : ", seleted_Upazilla) ;
+
+
+
+    // ConfirmPass
+    const [confirm_Pass , setConfirm_Pass] = useState('') ;
+
 
     // handleRegister
     const handleRegister = async(e) => {
@@ -26,8 +66,13 @@ const Register = () => {
 
         const pass = e.target.pass.value ;
         console.log("pass" , pass) ;
-        // const confirmpass = e.target.confirmpass.value ;
-        // console.log("confirmpass" , confirmpass) ;
+        const confirmpass = e.target.confirmpass.value ;
+        console.log("confirmpass" , confirmpass) ;
+        if(confirmpass !== pass) {
+            setConfirm_Pass('Password and Confirm Password must be the same!') ;
+            return ;
+        }
+        setConfirm_Pass('');
 
 
         // PC thk img niye ta imgbb link e convert kora
@@ -46,7 +91,7 @@ const Register = () => {
         }
 
 
-
+        e.target.reset() ;
         // regWithEmailPass
         if(res.data.success == true) {  // jodi image dye thake then.....
             regWithEmailPass (email , pass)
@@ -115,7 +160,7 @@ const Register = () => {
                                         <label className="label">Photo</label>
                                         <input type="file" name='photo' className="input" placeholder="Enter Your Photo" />
 
-                                        {/* <label className='label'>Blood Group</label>
+                                        <label className='label'>Blood Group</label>
                                         <select defaultValue="Select a Blood Group" className="select">
                                              <option disabled={true}>Select a Blood Group</option>
                                              <option value="">A+</option>
@@ -129,24 +174,29 @@ const Register = () => {
                                         </select>
 
                                         <label className='label'>District</label>
-                                        <select defaultValue="Select a District" className="select">
+                                        <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select">
                                              <option disabled={true}>Select a District</option>
-                                             <option value=""></option>
-                                             <option value=""></option>
+                                             {
+                                                districtData.map(i => <option key={i?.id} value={i?.division_id}>{i?.bn_name} </option>)
+                                             }
                                         </select>
 
                                         <label className='label'>Upazila</label>
-                                        <select defaultValue="Select a Upazila" className="select">
-                                             <option disabled={true}>Select a Upazila</option>
-                                             <option value=""></option>
-                                             <option value=""></option>
-                                        </select> */}
+                                        <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select">
+                                             <option disabled={true}>Select an Upazila</option>
+                                             {
+                                                upazillaData.filter(k => k.district_id === selected_District).map(j => <option key={j?.id} value={j?.district_id}>{j?.bn_name} </option>)
+                                             }
+                                        </select>
 
                                         <label className="label">Password</label>
                                         <input type="password" name='pass' className='input' placeholder='Enter Your Password'/>
 
-                                        {/* <label className="label">Confirm Password</label>
-                                        <input type="text" name='confirmpass' className="input" placeholder="Confirm Password" /> */}
+                                        <label className="label">Confirm Password</label>
+                                        <input type="text" name='confirmpass' className="input" placeholder="Confirm Password" />
+                                        {
+                                            confirm_Pass && <p className="text-red-600 text-sm mt-1">{confirm_Pass}</p>
+                                        }
                                         
                                         <button className="btn btn-neutral mt-4">Register</button>
                                     </fieldset>
