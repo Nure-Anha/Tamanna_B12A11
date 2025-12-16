@@ -17,6 +17,7 @@ import AllBloodDonationRequests from './Pages/DashBoard/AllBloodDonationRequests
 import CreateDonationRequest from './Pages/DashBoard/DonorDashBoard/CreateDonationRequest.jsx';
 import DonorDashHome from './Pages/DashBoard/DonorDashBoard/DonorDashHome.jsx';
 import MyDonationRequests from './Pages/DashBoard/DonorDashBoard/MyDonationRequests.jsx';
+import PrivatePage from './Pages/PrivatePage.jsx';
 
 
 const router = createBrowserRouter([
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   // Dashboard layout
   {
     path: '/dashboard' ,
-    Component: DashboardLayout ,
+    element: <PrivatePage><DashboardLayout></DashboardLayout></PrivatePage> ,
     children: [
       {index:true , Component: DashboardHome} ,
       {path:'profile' , Component: DashProfile} ,

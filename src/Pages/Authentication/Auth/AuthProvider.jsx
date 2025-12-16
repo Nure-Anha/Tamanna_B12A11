@@ -5,6 +5,12 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import axios from 'axios';
 
 const AuthProvider = ({children}) => {
+
+    // loading
+    const [loading , setLoading] = useState(true) ;
+
+
+
     // createUserWithEmailAndPassword:
     const regWithEmailPass = (email , pass) => {
         return createUserWithEmailAndPassword(auth, email, pass) ;
@@ -30,6 +36,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (curr_user) => {
         setUser(curr_user) ;
+        setLoading(false) ;
         });
         return unsubscribe ;
     }, [])
@@ -55,7 +62,7 @@ const AuthProvider = ({children}) => {
     } , [user])
 
 
-    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status ,}
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading ,}
 
 
     return (

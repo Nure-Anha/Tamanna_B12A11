@@ -12,7 +12,7 @@ const DonorDashHome = () => {
 
     const [recent , setRecent] = useState([]) ;
     useEffect(()=> {
-        axiosSecure.get(`http://localhost:3000/recent?userEmail=${user?.email}`)
+        axiosSecure.get(`/recent?userEmail=${user?.email}`)
         .then(res => setRecent(res.data))
         .catch(err => {
             console.log('error happaneded in getting latest Recent Donation Requests :', err.message) ;
