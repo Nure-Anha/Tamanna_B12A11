@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 const DonorDashHome = () => {
 
     const {user} = useContext(AuthContext) ;
-    console.log("Logged in user email:", user?.email);
 
 
     const [recent , setRecent] = useState([]) ;
@@ -16,7 +15,7 @@ const DonorDashHome = () => {
         .catch(err => {
             console.log('error happaneded in getting latest Recent Donation Requests :', err.message) ;
         })
-    } , [user?.email])
+        } , [user?.email])
         console.log('Recent Donation Reqs: ', recent) ;
 
 
