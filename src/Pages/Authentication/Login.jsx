@@ -15,7 +15,8 @@ const Login = () => {
         const pass = e.target.pass.value ;
         console.log("pass: ", pass) ;
 
-
+        e.target.reset() ;
+        
         // signInWithEmailPass
         signInWithEmailPass(email , pass) 
         .then(res => {

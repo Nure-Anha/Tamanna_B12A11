@@ -57,7 +57,7 @@ const NavBar = () => {
                     {/* <a className="btn border-red-600 hover:bg-red-600 hover:text-white">Login</a> */}
                 
                 {
-                    user ? (<div className='flex gap-x-5'><div className='tooltip tooltip-left'data-tip={user?.displayName}><img className='w-12 h-12 object-cover rounded-full' src={user?.photoURL} alt="" /></div> <Link className='btn btn-neutral mt-1' to={'/dashboardlayout'}>Dashboard</Link> <button onClick={handleLogout} className="btn btn-neutral mt-1">Logout</button></div>) : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
+                    user ? (<div className='flex gap-x-5'><div className='tooltip tooltip-left'data-tip={user?.displayName}><img className='w-12 h-12 object-cover rounded-full' src={user?.photoURL} alt="" /></div> <Link className='btn btn-neutral mt-1' to={'/dashboard'}>Dashboard</Link> <button onClick={handleLogout} className="btn btn-neutral mt-1">Logout</button></div>) : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
                 }
                 </div>
             </div>

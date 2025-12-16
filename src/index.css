@@ -7,6 +7,16 @@ li a.active {
     color: red;
 }
 
+.dashLinks a.active {
+    text-decoration: underline; 
+    color: red;
+    font-weight:500;
+    background-color: white;
+    width: 260px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 
 /* SLIDERRRRR */
 .swiper-slide {

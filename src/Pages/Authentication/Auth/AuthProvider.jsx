@@ -37,6 +37,7 @@ const AuthProvider = ({children}) => {
 
     // My Get_Role functionality for specific email
     const [role , setRole] = useState('') ;
+    const [status , setStatus] = useState('') ;
     useEffect(()=>{
         if(!user) {
             return ;
@@ -45,6 +46,8 @@ const AuthProvider = ({children}) => {
         .then(res => {
             console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
             setRole(res.data.role) ;
+            console.log("matched email's Status got:" , res.data.status) ;
+            setStatus(res.data.status) ;
         })
         .catch(err => {
             console.log("Error matched email", err) ;
@@ -52,7 +55,7 @@ const AuthProvider = ({children}) => {
     } , [user])
 
 
-    const authData = {regWithEmailPass , signInWithEmailPass , user , role ,}
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status ,}
 
 
     return (
