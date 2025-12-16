@@ -1,21 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Authentication/Auth/AuthContext';
 import { Link } from 'react-router';
+import useAxiosSecure from '../../../CustomHooks/useAxiosSecure';
 
 const DonorDashHome = () => {
 
     const {user} = useContext(AuthContext) ;
 
+    // central Localhost 3000 of backend
+    const axiosSecure = useAxiosSecure() ;
 
     const [recent , setRecent] = useState([]) ;
     useEffect(()=> {
-        fetch(`http://localhost:3000/recent?userEmail=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setRecent(data))
+        axiosSecure.get(`http://localhost:3000/recent?userEmail=${user?.email}`)
+        .then(res => setRecent(res.data))
         .catch(err => {
             console.log('error happaneded in getting latest Recent Donation Requests :', err.message) ;
         })
-        } , [user?.email])
+        } , [user?.email , axiosSecure])
         console.log('Recent Donation Reqs: ', recent) ;
 
 
