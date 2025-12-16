@@ -6,17 +6,17 @@ import VolunDashHome from './VolunteerDashboard/VolunDashHome';
 
 const DashboardHome = () => {
 
-    const {user} = useContext(AuthContext) ;
-    console.log("User:" , user) ;
+    const {user , role} = useContext(AuthContext) ;
 
     return (
         <div className='p-10 rounded-2xl'>
+            <title>Dashboard-Home</title>
             <div>
-                <h2 className="text-3xl font-bold mb-6 p-20 "> Welcome, {user?.displayName}</h2>
+                <h2 className="text-4xl font-bold text-black "> Welcome, {user?.displayName}!</h2>
 
-                {user?.role === "donor" && <DonorDashHome></DonorDashHome>}
-                {user?.role === "admin" && <AdminDashHome></AdminDashHome>}
-                {user?.role === "volunteer" && <VolunDashHome></VolunDashHome>}
+                {role === "donor" && <DonorDashHome></DonorDashHome>}
+                {role === "admin" && <AdminDashHome></AdminDashHome>}
+                {role === "volunteer" && <VolunDashHome></VolunDashHome>}
 
             </div>
         </div>

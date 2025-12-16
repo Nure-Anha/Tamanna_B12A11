@@ -15,6 +15,8 @@ import DashboardHome from './Pages/DashBoard/DashboardHome.jsx';
 import DashProfile from './Pages/DashBoard/DashProfile.jsx';
 import AllBloodDonationRequests from './Pages/DashBoard/AllBloodDonationRequests.jsx';
 import CreateDonationRequest from './Pages/DashBoard/DonorDashBoard/CreateDonationRequest.jsx';
+import DonorDashHome from './Pages/DashBoard/DonorDashBoard/DonorDashHome.jsx';
+import MyDonationRequests from './Pages/DashBoard/DonorDashBoard/MyDonationRequests.jsx';
 
 
 const router = createBrowserRouter([
@@ -35,9 +37,10 @@ const router = createBrowserRouter([
     Component: DashboardLayout ,
     children: [
       {index:true , Component: DashboardHome} ,
-      {path:'/dashboard/profile' , Component: DashProfile} ,
-      {path:'/dashboard/all-blood-donation-request' , Component: AllBloodDonationRequests} ,
-      {path:'/dashboard/create-donation-request' , Component:CreateDonationRequest} ,
+      {path:'profile' , Component: DashProfile} ,
+      {path:'all-blood-donation-request' , Component: AllBloodDonationRequests} ,
+      {path:'create-donation-request' , Component:CreateDonationRequest} ,
+      {path:'my-donation-requests' , Component:MyDonationRequests} ,
     ]
   }
 ]);

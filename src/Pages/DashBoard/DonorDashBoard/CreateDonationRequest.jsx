@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Authentication/Auth/AuthContext';
-import axios from 'axios';
+import useAxios from '../../../CustomHooks/UseAxios';
 
 const CreateDonationRequest = () => {
 
@@ -79,7 +79,7 @@ const CreateDonationRequest = () => {
                 Donation_Time: donationtime ,
                 Requester_Message: requestermessage
             }
-            axios.post('http://localhost:3000/created-donation-requsts' , donationReqData)
+            centralURL.post('/created-donation-requsts' , donationReqData)
             .then(res => {
                 console.log('Posted Created Donation Request Data :', res.data) ;
             })
@@ -88,6 +88,9 @@ const CreateDonationRequest = () => {
             })
 
         }
+
+    // central Localhost 3000 of backend
+    const centralURL = useAxios() ;
     
 
     return (
@@ -140,7 +143,7 @@ const CreateDonationRequest = () => {
 
                                         <label className='label'>Blood Group</label>
                                         <select name='bloodgroup' defaultValue="Select a Blood Group" className="select">
-                                             <option value="" disabled={true}>Select a Blood Group</option>
+                                             <option disabled={true}>Select a Blood Group</option>
                                              <option value="A+">A+</option>
                                              <option value="A-">A-</option>
                                              <option value="B+">B+</option>

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import { auth } from './Auth/FireBase.config';
 import { updateProfile } from 'firebase/auth';
+import useAxios from '../../CustomHooks/UseAxios';
 
 const Register = () => {
 
@@ -47,6 +48,9 @@ const Register = () => {
 
     // ConfirmPass
     const [confirm_Pass , setConfirm_Pass] = useState('') ;
+
+    // central Localhost 3000 of backend
+    const centralURL = useAxios() ;
 
 
     // handleRegister
@@ -103,7 +107,7 @@ const Register = () => {
                     // Profile updated!
 
                     // registered user data post into db*******************************
-                    axios.post("http://localhost:3000/users" , formData) 
+                    centralURL.post("/users" , formData) 
                     .then(res => {
                         console.log("Posted Registred Users Data to DB :" , res.data) ;
                     })
