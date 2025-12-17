@@ -42,7 +42,8 @@ const MyDonationRequests = () => {
     return (
         <div>
             <title>My Donation Requests</title>
-            <h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
+            {
+                recent.length !== 0 ? <><h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
 
             <div className="mt-15 ml-180">
                 <select onChange={handleFilterReq} className="select">
@@ -73,7 +74,7 @@ const MyDonationRequests = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            matched_Requests.map((k,index) => <tr key={k?._id} className="bg-base-200">
+                            matched_Requests?.map((k,index) => <tr key={k?._id} className="bg-base-200">
                             <th>{index+1} </th>
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
@@ -94,7 +95,8 @@ const MyDonationRequests = () => {
                     </button>
                     ))
                 }
-           </div> */}
+           </div> */}</> : <p className='text-3xl text-red-600 text-center mt-50 font-semibold'>Donation Request is not Created Yet!!!</p>
+            }
 
         </div>
     );

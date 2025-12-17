@@ -3,7 +3,7 @@ import React from 'react';
 const AllBloodDonationRequests = () => {
     return (
         <div>
-            <h3>sdsfs</h3>
+            <title>All Blood Donation Request</title>
         </div>
     );
 };

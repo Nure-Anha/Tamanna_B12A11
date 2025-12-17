@@ -18,6 +18,8 @@ import CreateDonationRequest from './Pages/DashBoard/DonorDashBoard/CreateDonati
 import DonorDashHome from './Pages/DashBoard/DonorDashBoard/DonorDashHome.jsx';
 import MyDonationRequests from './Pages/DashBoard/DonorDashBoard/MyDonationRequests.jsx';
 import PrivatePage from './Pages/PrivatePage.jsx';
+import AllUsers from './Pages/DashBoard/AdminDashBoard/AllUsers.jsx';
+import AllBloodDonationRequest from './Pages/DashBoard/AdminDashBoard/AllBloodDonationRequest.jsx';
 
 
 const router = createBrowserRouter([
@@ -42,6 +44,8 @@ const router = createBrowserRouter([
       {path:'all-blood-donation-request' , Component: AllBloodDonationRequests} ,
       {path:'create-donation-request' , Component:CreateDonationRequest} ,
       {path:'my-donation-requests' , Component:MyDonationRequests} ,
+      {path:'all-users' , Component:AllUsers} ,
+      {path:'all-blood-donation-request' , Component:AllBloodDonationRequest} ,
     ]
   }
 ]);

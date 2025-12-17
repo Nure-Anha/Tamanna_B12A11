@@ -45,7 +45,7 @@ const DonorDashHome = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            recent.map((k,index) => <tr key={k?._id} className="bg-base-200">
+                            recent?.map((k,index) => <tr key={k?._id} className="bg-base-200">
                             <th>{index+1} </th>
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
@@ -58,7 +58,7 @@ const DonorDashHome = () => {
                     </tbody>
                 </table>
                 <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
-            </div></> : <p className='text-3xl text-red-600 text-center mt-20 font-semibold'>No Donation Request is Created Yet!!!</p>
+            </div></> : <p className='text-3xl text-red-600 text-center mt-20 font-semibold'>Recent Donation Request is not Created Yet!!!</p>
             }
         </div>
     );

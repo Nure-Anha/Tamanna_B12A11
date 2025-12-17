@@ -8,6 +8,7 @@ const AuthProvider = ({children}) => {
 
     // loading
     const [loading , setLoading] = useState(true) ;
+    const [roleLoading , setRoleLoading] = useState(true) ;
     const centralURL = useAxios()
 
 
@@ -53,6 +54,7 @@ const AuthProvider = ({children}) => {
         .then(res => {
             console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
             setRole(res.data.role) ;
+            setRoleLoading(false) ;
             console.log("matched email's Status got:" , res.data.status) ;
             setStatus(res.data.status) ;
         })
@@ -62,7 +64,7 @@ const AuthProvider = ({children}) => {
     } , [user , centralURL])
 
 
-    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading ,}
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading , roleLoading}
 
 
     return (

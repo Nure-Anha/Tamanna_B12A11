@@ -4,13 +4,13 @@ import { Navigate } from 'react-router';
 
 const PrivatePage = ({children}) => {
 
-    const {user , loading} = useContext(AuthContext) ;
+    const {user , loading , roleLoading , status} = useContext(AuthContext) ;
 
-    if(loading) {
+    if(loading || roleLoading) {
         return <span className="loading loading-spinner loading-xl ml-170 mt-50"></span>
     }
-    if(!user){
-        return <Navigate state={location?.pathname} to={'/'}></Navigate>
+    if(!user || status !== "active"){
+        return <Navigate state={location?.pathname} to={'/login'}></Navigate>
     }
 
 
