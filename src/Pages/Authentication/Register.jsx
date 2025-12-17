@@ -4,12 +4,13 @@ import { Link } from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import { auth } from './Auth/FireBase.config';
 import { updateProfile } from 'firebase/auth';
-import useAxios from '../../CustomHooks/UseAxios';
+import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 
 const Register = () => {
 
     const {regWithEmailPass} = useContext(AuthContext) ;
-
+    // central Localhost 3000 of backend
+    const axiosSecure = useAxiosSecure() ;
     
 
     // District and Upazilla data load
@@ -49,8 +50,6 @@ const Register = () => {
     // ConfirmPass
     const [confirm_Pass , setConfirm_Pass] = useState('') ;
 
-    // central Localhost 3000 of backend
-    const centralURL = useAxios() ;
 
 
     // handleRegister
@@ -107,7 +106,7 @@ const Register = () => {
                     // Profile updated!
 
                     // registered user data post into db*******************************
-                    centralURL.post("/users" , formData) 
+                    axiosSecure.post("/users" , formData) 
                     .then(res => {
                         console.log("Posted Registred Users Data to DB :" , res.data) ;
                     })

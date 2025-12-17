@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from './FireBase.config';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
-import axios from 'axios';
+import useAxios from '../../../CustomHooks/UseAxios';
 
 const AuthProvider = ({children}) => {
 
     // loading
     const [loading , setLoading] = useState(true) ;
-
+    const centralURL = useAxios()
 
 
     // createUserWithEmailAndPassword:
@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
         if(!user) {
             return ;
         }
-        axios.get(`http://localhost:3000/users/${user?.email}`)
+        centralURL.get(`/users/${user?.email}`)  //dom
         .then(res => {
             console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
             setRole(res.data.role) ;
@@ -59,7 +59,7 @@ const AuthProvider = ({children}) => {
         .catch(err => {
             console.log("Error matched email", err) ;
         }) 
-    } , [user])
+    } , [user , centralURL])
 
 
     const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading ,}

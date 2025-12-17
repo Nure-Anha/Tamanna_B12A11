@@ -21,10 +21,39 @@ const MyDonationRequests = () => {
         console.log('All Donation Reqests of Logged in user: ', recent) ;
 
 
+        // Filter Requests By Status
+        const [filter , setFilter] = useState('') ;
+        // handleFilterReq
+        const handleFilterReq = (e) => {
+            setFilter(e.target.value) ;
+        }
+
+        const matched_Requests = recent.filter(m => m.Donation_status === filter || filter === '') ;
+
+
+        // paginatiom
+        // const [page, setPage] = useState(1);       
+        // const [limit] = useState(2); 
+        // const startIndex = (page - 1) * limit;
+        // const paginated_Requests = matched_Requests.slice(startIndex, startIndex + limit);
+        // const totalPages = Math.ceil(matched_Requests.length / limit);
+
+
     return (
         <div>
             <title>My Donation Requests</title>
             <h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
+
+            <div className="mt-15 ml-180">
+                <select onChange={handleFilterReq} className="select">
+                    <option value="">Filter Donation Requests by Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="done">Done</option>
+                    <option value="canceled">Canceled</option>
+                </select>
+            </div>
+
             <div className="overflow-x-auto mt-10 m-10">
                 <table className="table">
                     {/* head */}
@@ -44,7 +73,7 @@ const MyDonationRequests = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            recent.map((k,index) => <tr key={k?._id} className="bg-base-200">
+                            matched_Requests.map((k,index) => <tr key={k?._id} className="bg-base-200">
                             <th>{index+1} </th>
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
@@ -57,6 +86,16 @@ const MyDonationRequests = () => {
                     </tbody>
                 </table>
             </div>
+            {/* <div className="join mt-5 flex justify-center">
+                {
+                    [...Array(totalPages).keys()].map(num => (
+                    <button key={num} className={`join-item btn ${page === num + 1 ? 'btn-active' : ''}`} onClick={() => setPage(num + 1)}>
+                        {num + 1}
+                    </button>
+                    ))
+                }
+           </div> */}
+
         </div>
     );
 };
