@@ -11,7 +11,8 @@ const NavBar = () => {
     // links 
     const links = <>
     <li className='font-bold text-base-content'><NavLink to={"/"}>Home</NavLink></li>
-    <li className='font-bold text-base-content'><NavLink to={"/"}>Donation Requests</NavLink></li> </>
+    <li className='font-bold text-base-content'><NavLink to={"/dfdf"}>Donation Requests</NavLink></li> 
+    <li className='font-bold text-base-content'><NavLink to={"/fundings"}>Fundings</NavLink></li> </>
 
     // handleLogout
     const handleLogout = () => {

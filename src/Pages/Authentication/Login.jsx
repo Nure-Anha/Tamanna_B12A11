@@ -6,8 +6,8 @@ const Login = () => {
 
     const {signInWithEmailPass} = useContext(AuthContext) ;
 
-    const location = useLocation() ;
-    const navigate = useNavigate() ;
+    // const location = useLocation() ;
+    // const navigate = useNavigate() ;
 
     // handleLogin
     const handleLogin = (e) => {
@@ -24,7 +24,7 @@ const Login = () => {
         signInWithEmailPass(email , pass) 
         .then(res => {
             console.log('Signed In With EmailPass :', res.user) ;
-            navigate(location.state ? location.state : '/') ;
+            // navigate(location.state ? location.state : '/') ;
         })
         .catch((error) => {
             console.log("error sign in :" , error.message) ;

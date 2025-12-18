@@ -45,10 +45,17 @@ const AllUsers = () => {
     }
     const matched_Status = allusers.filter(p => p?.status === filter || filter === '')
 
+    
+    const [page, setPage] = useState(1);       
+            const [limit] = useState(3); 
+            const startIndex = (page-1)*limit;
+            const paginationReq = allusers.slice(startIndex, startIndex + limit);
+            const totalPages = Math.ceil(allusers.length / limit);
+
 
     return (
         <div className='p-10'>
-            <title>All Users</title>
+            <title>Admin - All Users</title>
             <div className="overflow-x-auto">
                 <h4 className='text-5xl font-bold text-center mb-15 text-black'>All Users</h4>
 
@@ -81,7 +88,7 @@ const AllUsers = () => {
                     <tbody className='font-semibold text-black'>
                         {/* row 1 */}
                         {
-                            matched_Status?.map(n => <tr key={n?._id}>
+                            paginationReq?.map(n => <tr key={n?._id}>
                             {/* <th><label><input type="checkbox" className="checkbox"/></label></th> */}
                             <td>
                             <div className="flex items-center gap-3">
@@ -127,6 +134,12 @@ const AllUsers = () => {
                     </tbody>
                 </table>
             </div>
+            <div className="join mt-5 flex justify-center">
+                {
+                    [...Array(totalPages).keys()].map(p => <button key={p} className={`btn ${page === p + 1 ? 'btn-active' : ''}`} onClick={() => setPage(p + 1)}>{p + 1}</button>
+                    )
+                }
+           </div>
         </div>
     );
 };

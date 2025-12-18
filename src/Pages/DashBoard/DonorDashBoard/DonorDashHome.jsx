@@ -67,12 +67,13 @@ const DonorDashHome = () => {
                     {/* head */}
                     <thead>
                         <tr className='text-gray-500'>
-                            <th>Recipient Name</th>
-                            <th>Recipient Location</th>
-                            <th>Donation Date</th>
+                            <th>#Serial</th>
+                            <th>Recipient <br /> Name</th>
+                            <th>Recipient <br /> Location</th>
+                            <th>Donation <br /> Date</th>
                             <th>Donation <br /> Time</th>
                             <th>Blood <br /> Group</th>
-                            <th>Donation Status</th>
+                            <th>Donation <br /> Status</th>
                             <th>Donor <br /> Information</th>
                             <th>Actions</th>
 
@@ -82,7 +83,8 @@ const DonorDashHome = () => {
                     <tbody className='font-semibold'>
                         {/* row 1 */}
                         {
-                            recent?.map((k) => <tr key={k?._id} className="bg-base-200">
+                            recent?.map((k,index) => <tr key={k?._id} className="bg-base-200">
+                            <th>{index+1}</th>
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
                             <td>{k?.Donation_Date} </td>
@@ -126,19 +128,19 @@ const DonorDashHome = () => {
             }
 
             <dialog id="my_modal_1" className="modal">
-                                        <div className="modal-box">
-                                            <h3 className="font-bold text-red-600 text-lg">Are You Sure You Want To Delete this Donation Request?</h3>
-                                            <p className="py-4 text-gray-600 font-normal">This action cannot be undone!!!</p>
-                                            <div className="modal-action">
-                                            <form method="dialog">
-                                                {/* if there is a button in form, it will close the modal */}
-                                                <button onClick={handleDelFromDatabase} className="btn">Close</button>
-                                            </form>
-                                            <button onClick={()=> handleDelFromDatabase(deleteReq)} className="btn btn-error text-white">
-                                                Yes, Delete</button>
-                                            </div>
-                                        </div>
-                                    </dialog>
+                <div className="modal-box">
+                    <h3 className="font-bold text-red-600 text-lg">Are You Sure You Want To Delete this Donation Request?</h3>
+                    <p className="py-4 text-gray-600 font-normal">This action cannot be undone!!!</p>
+                    <div className="modal-action">
+                    <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button onClick={handleDelFromDatabase} className="btn">Close</button>
+                    </form>
+                    <button onClick={()=> handleDelFromDatabase(deleteReq)} className="btn btn-error text-white">
+                        Yes, Delete</button>
+                    </div>
+                </div>
+            </dialog>
 
         </div>
     );

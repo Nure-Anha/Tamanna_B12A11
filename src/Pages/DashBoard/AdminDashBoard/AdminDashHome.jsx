@@ -34,6 +34,7 @@ const AdminDashHome = () => {
 
     return (
         <div>
+            <title>Admin - Dashboard Home</title>
         <div className="text-center mt-10">
             <h3 className="text-4xl font-bold text-gray-800">Admin Dashboard</h3>
             <p className="text-gray-500 mt-2">Overview of system statistics</p>

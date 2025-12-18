@@ -10,7 +10,8 @@ const PrivatePage = ({children}) => {
         return <span className="loading loading-spinner loading-xl ml-170 mt-50"></span>
     }
     if(!user || status !== "active"){
-        return <Navigate state={location?.pathname} to={'/login'}></Navigate>
+        // return <Navigate state={location?.pathname} to={'/login'}></Navigate>
+        return <Navigate to={'/login'}></Navigate>
     }
 
 

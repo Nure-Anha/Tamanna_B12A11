@@ -20,6 +20,7 @@ import AllUsers from './Pages/DashBoard/AdminDashBoard/AllUsers.jsx';
 import EditDonationReq from './Pages/DashBoard/DonorDashBoard/EditDonationReq.jsx';
 import DonationRequestDetails from './Pages/DashBoard/DonorDashBoard/DonationRequestDetails.jsx';
 import AllBloodDonationRequests from './Pages/DashBoard/AdminDashBoard/AllBloodDonationRequests.jsx';
+import Fundings from './Pages/Fundings.jsx';
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
       {path:'edit-donation-request/:id' , Component:EditDonationReq} ,
       {path:'donation-request-details' , Component:DonationRequestDetails} ,
       {path:'all-blood-donation-request' , Component:AllBloodDonationRequests} ,
+      {path:'fundings' , Component:Fundings} ,
     ]
   }
 ]);
