@@ -13,13 +13,13 @@ import Register from './Pages/Authentication/Register.jsx';
 import DashboardLayout from './Layouts/DashboardLayout/DashboardLayout.jsx';
 import DashboardHome from './Pages/DashBoard/DashboardHome.jsx';
 import DashProfile from './Pages/DashBoard/DashProfile.jsx';
-import AllBloodDonationRequests from './Pages/DashBoard/AllBloodDonationRequests.jsx';
 import CreateDonationRequest from './Pages/DashBoard/DonorDashBoard/CreateDonationRequest.jsx';
 import MyDonationRequests from './Pages/DashBoard/DonorDashBoard/MyDonationRequests.jsx';
 import PrivatePage from './Pages/PrivatePage.jsx';
 import AllUsers from './Pages/DashBoard/AdminDashBoard/AllUsers.jsx';
 import EditDonationReq from './Pages/DashBoard/DonorDashBoard/EditDonationReq.jsx';
 import DonationRequestDetails from './Pages/DashBoard/DonorDashBoard/DonationRequestDetails.jsx';
+import AllBloodDonationRequests from './Pages/DashBoard/AdminDashBoard/AllBloodDonationRequests.jsx';
 
 
 const router = createBrowserRouter([
@@ -41,13 +41,12 @@ const router = createBrowserRouter([
     children: [
       {index:true , Component: DashboardHome} ,
       {path:'profile' , Component: DashProfile} ,
-      {path:'all-blood-donation-request' , Component: AllBloodDonationRequests} ,
       {path:'create-donation-request' , Component:CreateDonationRequest} ,
       {path:'my-donation-requests' , Component:MyDonationRequests} ,
       {path:'all-users' , Component:AllUsers} ,
-      {path:'all-blood-donation-request' , Component:AllBloodDonationRequests} ,
       {path:'edit-donation-request/:id' , Component:EditDonationReq} ,
       {path:'donation-request-details' , Component:DonationRequestDetails} ,
+      {path:'all-blood-donation-request' , Component:AllBloodDonationRequests} ,
     ]
   }
 ]);
