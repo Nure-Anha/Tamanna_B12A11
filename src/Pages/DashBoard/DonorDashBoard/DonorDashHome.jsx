@@ -11,14 +11,27 @@ const DonorDashHome = () => {
     const axiosSecure = useAxiosSecure() ;
 
     const [recent , setRecent] = useState([]) ;
-    useEffect(()=> {
+    const fetchUser = () => {
         axiosSecure.get(`/recent?userEmail=${user?.email}`)
         .then(res => setRecent(res.data))
         .catch(err => {
             console.log('error happaneded in getting latest Recent Donation Requests :', err.message) ;
         })
+    }
+    useEffect(()=> {
+        fetchUser() ;
         } , [user?.email , axiosSecure])
         console.log('Recent Donation Reqs: ', recent) ;
+
+
+    // handleStatusUpdate
+    const handleDonationStatus = (id , DonationStatus) => {
+        axiosSecure.patch(`/update-donation-status?my_id=${id}&myDonationStatus=${DonationStatus}`)
+        .then(res => {
+            console.log(res.data) ;
+            fetchUser() ;
+        })
+    }
 
 
     return (
@@ -38,6 +51,7 @@ const DonorDashHome = () => {
                             <th>Donation Time</th>
                             <th>Blood Group</th>
                             <th>Donation Status</th>
+                            <th>Actions</th>
 
                         </tr>
                     </thead>
@@ -53,6 +67,32 @@ const DonorDashHome = () => {
                             <td>{k?.Donation_Time} </td>
                             <td>{k?.Blood_Group} </td>
                             <td>{k?.Donation_status} </td>
+
+                            {/* <td>
+                                {
+                                    k?.Donation_status === 'inprogress' && <button onClick={()=>handleDonationStatus(k?.Requester_Email , k?.Donation_status)} className='btn'>Done</button> 
+                                }
+                                {
+                                    k?.Donation_status === 'inprogress' && <button onClick={()=>handleDonationStatus(k?.Requester_Email , k?.Donation_status)} className='btn btn-error'>Cancel</button> 
+                                }
+                            </td> */}
+
+
+                            <th className='relative'>
+                                {
+                                    k?.Donation_status === 'inprogress' ? <div className="dropdown  dropdown-end ml-5">
+                                    <div tabIndex={-1} className="btn bg-transparent p-0 border-0 btn-sm">
+                                        <img className='w-5' src="/myAssets/dots.png" alt="" />
+                                    </div>
+
+                                    <ul className="dropdown-content menu shadow bg-base-100 rounded-box  w-30 p-2 space-y-2">
+                                            {
+                                                k?.Donation_status === 'inprogress' && <><li><button onClick={()=>handleDonationStatus(k?._id , 'done')} className='btn btn-sm w-full bg-green-600 text-white'>Done</button></li> <li><button onClick={()=>handleDonationStatus(k?._id , 'cancelled')} className='btn btn-sm w-full btn-error text-white'>Cancel</button></li>  </> 
+                                            }
+                                    </ul>
+                                </div> : ''
+                                }
+                            </th>
                         </tr>)
                         }
                     </tbody>

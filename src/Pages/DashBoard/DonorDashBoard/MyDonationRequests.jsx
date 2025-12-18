@@ -41,7 +41,7 @@ const MyDonationRequests = () => {
 
     return (
         <div>
-            <title>My Donation Requests</title>
+            <title>Donor - My Donation Requests</title>
             {
                 recent.length !== 0 ? <><h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
 
