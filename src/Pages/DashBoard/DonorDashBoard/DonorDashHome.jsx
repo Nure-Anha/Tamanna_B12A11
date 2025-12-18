@@ -34,6 +34,29 @@ const DonorDashHome = () => {
     }
 
 
+    const [deleteReq , setDeleteReq] = useState(null) ;
+    // handleDeleteBtn
+    const handleDeleteBtn = (id) => {
+        setDeleteReq(id) ;
+        // modal er btn onclick function ekhne ana hyse
+        document.getElementById('my_modal_1').showModal() ;   
+    }
+
+    //  del from datatbase
+    const handleDelFromDatabase = (id) => {
+        axiosSecure.delete(`/delete-req/${id}`)
+        .then(res => {
+            console.log('deleted req', res.data) ;
+            document.getElementById('my_modal_1').close();
+            fetchUser();
+        })
+        .catch(err => {
+            console.log("error in delete req" , err) ;
+        })
+    }
+
+
+
     return (
         <div>
             <title>Donor-Dashboard-Home</title>
@@ -44,41 +67,42 @@ const DonorDashHome = () => {
                     {/* head */}
                     <thead>
                         <tr className='text-gray-500'>
-                            <th>#Serial</th>
                             <th>Recipient Name</th>
                             <th>Recipient Location</th>
                             <th>Donation Date</th>
-                            <th>Donation Time</th>
-                            <th>Blood Group</th>
+                            <th>Donation <br /> Time</th>
+                            <th>Blood <br /> Group</th>
                             <th>Donation Status</th>
+                            <th>Donor <br /> Information</th>
                             <th>Actions</th>
 
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody className='font-semibold'>
                         {/* row 1 */}
                         {
-                            recent?.map((k,index) => <tr key={k?._id} className="bg-base-200">
-                            <th>{index+1} </th>
+                            recent?.map((k) => <tr key={k?._id} className="bg-base-200">
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
                             <td>{k?.Donation_Date} </td>
                             <td>{k?.Donation_Time} </td>
                             <td>{k?.Blood_Group} </td>
-                            <td>{k?.Donation_status} </td>
-
-                            {/* <td>
+                            <td>{k?.Donation_status}</td>
+                            <td>
                                 {
-                                    k?.Donation_status === 'inprogress' && <button onClick={()=>handleDonationStatus(k?.Requester_Email , k?.Donation_status)} className='btn'>Done</button> 
+                                    k?.Donation_status === 'inprogress' && <><p> {k?.Requester_Name} </p> <small className='text-gray-700'> {k?.Requester_Email} </small></>
                                 }
-                                {
-                                    k?.Donation_status === 'inprogress' && <button onClick={()=>handleDonationStatus(k?.Requester_Email , k?.Donation_status)} className='btn btn-error'>Cancel</button> 
-                                }
-                            </td> */}
+                            </td>
 
 
                             <th className='relative'>
+                                    <Link to={`/dashboard/edit-donation-request/${k?._id}`} className="btn btn-sm bg-sky-500 text-white">Edit</Link>
+                                    
+                                    <button onClick={()=> handleDeleteBtn(k?._id)} className="btn bg-red-500 btn-sm text-white">Delete</button> 
+
+                                    <Link to={'/dashboard/donation-request-details'} className="btn btn-sm bg-violet-500 text-white">View</Link>    
+
                                 {
                                     k?.Donation_status === 'inprogress' ? <div className="dropdown  dropdown-end ml-5">
                                     <div tabIndex={-1} className="btn bg-transparent p-0 border-0 btn-sm">
@@ -100,6 +124,22 @@ const DonorDashHome = () => {
                 <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
             </div></> : <p className='text-3xl text-red-600 text-center mt-20 font-semibold'>Recent Donation Request is not Created Yet!!!</p>
             }
+
+            <dialog id="my_modal_1" className="modal">
+                                        <div className="modal-box">
+                                            <h3 className="font-bold text-red-600 text-lg">Are You Sure You Want To Delete this Donation Request?</h3>
+                                            <p className="py-4 text-gray-600 font-normal">This action cannot be undone!!!</p>
+                                            <div className="modal-action">
+                                            <form method="dialog">
+                                                {/* if there is a button in form, it will close the modal */}
+                                                <button onClick={handleDelFromDatabase} className="btn">Close</button>
+                                            </form>
+                                            <button onClick={()=> handleDelFromDatabase(deleteReq)} className="btn btn-error text-white">
+                                                Yes, Delete</button>
+                                            </div>
+                                        </div>
+                                    </dialog>
+
         </div>
     );
 };
