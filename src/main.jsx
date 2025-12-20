@@ -23,6 +23,7 @@ import AllBloodDonationRequests from './Pages/DashBoard/AdminDashBoard/AllBloodD
 import Fundings from './Pages/Fundings.jsx';
 import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
+import PublicBloodDonationReq from './Pages/PublicBloodDonationReq.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       {path:'fundings' , Component:Fundings} ,
       {path:'payment-success' , Component:PaymentSuccess} ,
       {path:'search-page' , Component:SearchPage} ,
+      {path:'public-blood-donation-requests' , Component:PublicBloodDonationReq} ,
     ]
   },
 
