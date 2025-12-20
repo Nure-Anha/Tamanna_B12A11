@@ -3,6 +3,7 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Link } from 'react-router';
 
 const Slider = () => {
     return (
@@ -19,10 +20,10 @@ const Slider = () => {
 
                                 {/* Btn */}
                                 <div className="flex gap-8 justify-center mt-20">
-                                    <button className="btn bg-red-600 hover:bg-red-800 text-white hover:border-red-800 border-red-600 p-6">
-                                    Join as a donor</button>
+                                    <Link to={'/register'} className="btn bg-red-600 hover:bg-red-800 text-white hover:border-red-800 border-red-600 p-6">
+                                    Join as a donor</Link>
 
-                                    <button className="btn bg-transparent text-white border-white hover:bg-white hover:text-red-600 p-6">Search Donors</button>
+                                    <Link to={'/search-page'} className="btn bg-transparent text-white border-white hover:bg-white hover:text-red-600 p-6">Search Donors</Link>
                                 </div>
                             </div>
                         </div>
