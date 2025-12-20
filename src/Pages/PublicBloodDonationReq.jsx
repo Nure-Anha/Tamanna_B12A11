@@ -1,5 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import useAxios from '../CustomHooks/UseAxios';
+import { Link, useNavigate } from 'react-router';
 
 const PublicBloodDonationReq = () => {
 
@@ -13,11 +14,17 @@ const PublicBloodDonationReq = () => {
   }, [axiosInstance]);
 
 
+  const navigate = useNavigate() ;
+  const handleViewBtn = (id) => {
+    navigate(`/blood-donation-request-details/${id}`) ;
+  }
+
+
     return (
-        <div className="p-15 bg-[#f1f6fa]">
+        <div className="p-10 bg-[#f1f6fa]">
             <title>Blood Donation Requests</title>
 
-            <h2 className="text-4xl font-bold text-center  text-red-700">All Pending Blood Donation Requests</h2>
+            <h2 className="text-4xl font-bold text-center mb-20">All Pending Blood Donation Requests</h2>
 
                 <div className="overflow-x-auto bg-white shadow-2xl rounded-lg mt-10">
                     <table className="table">
@@ -45,7 +52,7 @@ const PublicBloodDonationReq = () => {
                                     <td>{r.Donation_Date}</td>
                                     <td>{r.Donation_Time}</td>
                                     <td>
-                                        <button className="btn btn-sm bg-rose-400 text-white hover:bg-red-700">View</button>
+                                        <button onClick={()=>handleViewBtn(r?._id)} className="btn btn-sm bg-rose-400 text-white hover:bg-red-700">View</button>
                                     </td>
                             </tr>)
                             }

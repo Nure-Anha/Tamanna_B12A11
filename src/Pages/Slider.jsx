@@ -11,12 +11,12 @@ const Slider = () => {
             <>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                     <SwiperSlide>
-                        <img className='brightness-50' src="/myAssets/img01.jpg" alt="" />
+                        <img className='brightness-50' src="/myAssets/im3.jpg" alt="" />
                         
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-white">
                                 <p className="text-sm md:text-lg mb-2">Every drop matters</p>
-                                <h1 className="text-3xl md:text-5xl font-extrabold uppercase leading-tight">Give Blood, <br />Give Life</h1>
+                                <h1 className="text-3xl md:text-5xl font-extrabold uppercase leading-tight">Give Blood,Give Life</h1>
 
                                 {/* Btn */}
                                 <div className="flex gap-8 justify-center mt-20">
@@ -28,25 +28,27 @@ const Slider = () => {
                             </div>
                         </div>
                     </SwiperSlide>
+                    
 
                     <SwiperSlide>
-                        <img className='brightness-50' src="/myAssets/img03.jpg" alt="" />
-
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-white">
-                                <p className="text-sm md:text-lg mb-2">One donation can save three lives</p>
-                                <h1 className="text-3xl md:text-5xl font-extrabold uppercase leading-tight">DONATE BLOOD <br />TODAY</h1>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-
-                    <SwiperSlide>
-                        <img className='brightness-50' src="/myAssets/img2.jpg" alt="" />
+                        <img className='brightness-50' src="/myAssets/im1.jpg" alt="" />
 
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="text-white">
                                 <p className="text-sm md:text-lg mb-2">Join the movement</p>
                                 <h1 className="text-3xl md:text-5xl font-extrabold uppercase leading-tight">SAVE LIVES  THROUGH <br />BLOOD DONATION</h1>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+
+
+                    <SwiperSlide>
+                        <img className='brightness-50' src="/myAssets/im2.jpg" alt="" />
+
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-white">
+                                <p className="text-sm md:text-lg mb-2">One donation can save three lives</p>
+                                <h1 className="text-3xl md:text-5xl font-extrabold uppercase leading-tight">DONATE BLOOD <br />TODAY</h1>
                             </div>
                         </div>
                     </SwiperSlide>

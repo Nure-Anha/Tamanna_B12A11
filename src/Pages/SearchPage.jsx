@@ -114,7 +114,9 @@ const SearchPage = () => {
                             donorFound.map(t => <div key={t?._id} className="card bg-white w-96 shadow-md border border-rose-100 p-3">
                                 <div className="card-body">
                                 <div className="flex justify-between items-center">
+
                                     <span className="badge bg-red-200 text-sm px-3 py-2"><img className='w-5' src="/public/myAssets/blood-drop.png" alt="" /> {t.Blood_Group}</span>
+
                                     <span className={`badge text-sm px-3 py-2 ${ t.Donation_status === 'pending'
                                         ? 'bg-sky-400'
                                         : t.Donation_status === 'inprogress'
@@ -134,7 +136,7 @@ const SearchPage = () => {
                                 </p>
 
                                 <div className="flex justify-between text-sm text-gray-500 mt-2">
-                                    <span><FontAwesomeIcon icon={faCalendar} /> {t.Donation_Date}</span><span><FontAwesomeIcon icon={faClock} /> {t.Donation_Time}</span>
+                                    <span><FontAwesomeIcon icon={faCalendar}/> {t.Donation_Date}</span><span><FontAwesomeIcon icon={faClock} /> {t.Donation_Time}</span>
                                 </div>
 
                                 <div className="card-actions justify-end mt-4">

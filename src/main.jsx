@@ -24,6 +24,7 @@ import Fundings from './Pages/Fundings.jsx';
 import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import PublicBloodDonationReq from './Pages/PublicBloodDonationReq.jsx';
+import BloodDonationRequestDetailsPage from './Pages/BloodDonationRequestDetailsPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       {path:'payment-success' , Component:PaymentSuccess} ,
       {path:'search-page' , Component:SearchPage} ,
       {path:'public-blood-donation-requests' , Component:PublicBloodDonationReq} ,
+      {path:'blood-donation-request-details/:id' , Component:BloodDonationRequestDetailsPage} ,
     ]
   },
 
