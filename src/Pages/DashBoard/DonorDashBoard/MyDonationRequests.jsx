@@ -137,10 +137,10 @@ const MyDonationRequests = () => {
                                     <Link to={'/dashboard/donation-request-details'} className="btn btn-sm bg-violet-500 text-white">View</Link> 
 
                                 {
-                                    k?.Donation_status === 'inprogress' ? <div className="dropdown  dropdown-end ml-5">
-                                    <div tabIndex={-1} className="btn bg-transparent p-0 border-0 btn-sm">
+                                    k?.Donation_status === 'inprogress' ? <div className="dropdown  dropdown-end">
+                                    <button tabIndex={-1} className="btn border bg-transparent p-4 hover:bg-gray-200 btn-sm">
                                         <img className='w-5' src="/myAssets/dots.png" alt="" />
-                                    </div>
+                                    </button>
 
                                     <ul className="dropdown-content menu shadow bg-base-100 rounded-box  w-30 p-2 space-y-2">
                                             {

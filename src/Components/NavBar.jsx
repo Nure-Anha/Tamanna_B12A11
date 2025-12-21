@@ -60,7 +60,20 @@ const NavBar = () => {
                     {/* <a className="btn border-red-600 hover:bg-red-600 hover:text-white">Login</a> */}
                 
                 {
-                    user ? (<div className='flex gap-x-5'><div className='tooltip tooltip-left'data-tip={user?.displayName}><img className='w-12 h-12 object-cover rounded-full' src={user?.photoURL} alt="" /></div> <Link className='btn btn-neutral mt-1' to={'/dashboard'}>Dashboard</Link> <button onClick={handleLogout} className="btn btn-neutral mt-1">Logout</button></div>) : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
+                    user ? 
+                    // <div className='flex gap-x-5'><div className='tooltip tooltip-left'data-tip={user?.displayName}><img className='w-12 h-12 object-cover rounded-full' src={user?.photoURL} alt="" /></div> <Link className='btn btn-neutral mt-1' to={'/dashboard'}>Dashboard</Link> <button onClick={handleLogout} className="btn btn-neutral mt-1">Logout</button></div>
+                    <div className='dropdown dropdown-end'>
+                        <button className="btn btn-ghost p-0 btn-circle avatar" popoverTarget="popover-1" style={{ anchorName: "--anchor-1" } /* as React.CSSProperties */}>
+                        <img className='bject-cover rounded-full' src={user?.photoURL} alt="" />
+                        </button>
+
+                        <ul className="dropdown menu rounded-box bg-base-100 shadow-sm space-y-2"
+                        popover="auto" id="popover-1" style={{ positionAnchor: "--anchor-1" } /* as React.CSSProperties */ }>
+                        <Link className='btn hover:bg-rose-600 hover:text-white mt-1' to={'/dashboard'}>Dashboard</Link> <br />
+                        <button onClick={handleLogout} className="btn btn-neutral px-7 mt-1">Logout</button>
+                        </ul>
+                    </div> 
+                    : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>
                 }
                 </div>
             </div>
