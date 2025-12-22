@@ -18,9 +18,8 @@ import MyDonationRequests from './Pages/DashBoard/DonorDashBoard/MyDonationReque
 import PrivatePage from './Pages/PrivatePage.jsx';
 import AllUsers from './Pages/DashBoard/AdminDashBoard/AllUsers.jsx';
 import EditDonationReq from './Pages/DashBoard/DonorDashBoard/EditDonationReq.jsx';
-import DonationRequestDetails from './Pages/DashBoard/DonorDashBoard/DonationRequestDetails.jsx';
 import AllBloodDonationRequests from './Pages/DashBoard/AdminDashBoard/AllBloodDonationRequests.jsx';
-import Fundings from './Pages/Fundings.jsx';
+import Fundings from './Pages/Fundings.jsx'
 import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import PublicBloodDonationReq from './Pages/PublicBloodDonationReq.jsx';
@@ -35,11 +34,11 @@ const router = createBrowserRouter([
       {index:true , Component:Home} ,
       {path:'register' , Component:Register} ,
       {path:'login' , Component:Login} ,
-      {path:'fundings' , Component:Fundings} ,
+      {path:'fundings' , element: <PrivatePage><Fundings></Fundings></PrivatePage>} ,
       {path:'payment-success' , Component:PaymentSuccess} ,
       {path:'search-page' , Component:SearchPage} ,
       {path:'public-blood-donation-requests' , Component:PublicBloodDonationReq} ,
-      {path:'blood-donation-request-details/:id' , Component:BloodDonationRequestDetailsPage} ,
+      {path:'blood-donation-request-details/:id' , element: <PrivatePage><BloodDonationRequestDetailsPage></BloodDonationRequestDetailsPage></PrivatePage>} ,
     ]
   },
 
@@ -55,8 +54,8 @@ const router = createBrowserRouter([
       {path:'my-donation-requests' , Component:MyDonationRequests} ,
       {path:'all-users' , Component:AllUsers} ,
       {path:'edit-donation-request/:id' , Component:EditDonationReq} ,
-      {path:'donation-request-details' , Component:DonationRequestDetails} ,
       {path:'all-blood-donation-request' , Component:AllBloodDonationRequests} ,
+      {path:'profile' , Component:DashProfile} ,
       
     ]
   }

@@ -56,7 +56,7 @@ const Fundings = () => {
                 <div className="flex justify-end mb-4">
                     <form onSubmit={handleDonateAmount} className='flex ml-260'>
                         <input name='donateamount' type="text" placeholder="Donate Amount" className="input" />
-                        <button className='btn bg-fuchsia-800 text-white'>Give Fund</button>
+                        <button className='btn bg-red-600  text-white'>Give Fund</button>
                     </form>
                 </div>
 

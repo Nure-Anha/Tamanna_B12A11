@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Authentication/Auth/AuthContext';
 import useAxiosSecure from '../../../CustomHooks/useAxiosSecure';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const AllBloodDonationRequests = () => {
 
@@ -34,12 +34,12 @@ const AllBloodDonationRequests = () => {
         const matched_Requests = recent.filter(m => m.Donation_status === filter || filter === '') ;
 
 
-        // paginatiom
-        // const [page, setPage] = useState(1);       
-        // const [limit] = useState(2); 
-        // const startIndex = (page - 1) * limit;
-        // const paginated_Requests = matched_Requests.slice(startIndex, startIndex + limit);
-        // const totalPages = Math.ceil(matched_Requests.length / limit);
+       
+        const [page, setPage] = useState(1);       
+        const [limit] = useState(10); 
+        const startIndex = (page-1)*limit;
+        const paginationReq = matched_Requests.slice(startIndex, startIndex + limit);
+        const totalPages = Math.ceil(matched_Requests.length / limit);
 
 
 
@@ -73,6 +73,12 @@ const AllBloodDonationRequests = () => {
         .catch(err => {
             console.log("error in delete req" , err) ;
         })
+    }
+
+    const navigate = useNavigate() ;
+    // handleViewBtn
+    const handleViewBtn = (id) => {
+        navigate(`/blood-donation-request-details/${id}`)
     }
 
     return (
@@ -113,8 +119,8 @@ const AllBloodDonationRequests = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            matched_Requests?.map((k,index) => <tr key={k?._id} className="bg-base-200">
-                            <th>{index+1} </th>
+                            paginationReq?.map((k,index) => <tr key={k?._id} className="bg-base-200">
+                            <th>{startIndex+index+1} </th>
                             <td>{k?.Recipient_Name} </td>
                             <td>{k?.Recipient_District} , {k?.Recipient_Upazilla} </td>
                             <td>{k?.Donation_Date} </td>
@@ -137,7 +143,7 @@ const AllBloodDonationRequests = () => {
                                     
 
                                     {
-                                        (role === 'admin' || role === 'volunteer' ) && <Link to={'/dashboard/donation-request-details'} className="btn btn-sm bg-violet-300 ">View</Link> 
+                                        (role === 'admin' || role === 'volunteer' ) && <button onClick={()=>handleViewBtn(k?._id)} className="btn btn-sm bg-violet-300 ">View</button> 
                                     }
 
                                 {/* {
@@ -157,8 +163,8 @@ const AllBloodDonationRequests = () => {
                                     </ul>
                                 </div> 
                                 } */}
-                                <div className="dropdown dropdown-end ml-5">
-                                    <div tabIndex={0} className="btn btn-ghost p-0 btn-sm">
+                                <div className="dropdown dropdown-end ml-12">
+                                    <div tabIndex={0} className="btn border bg-transparent mt-2 p-4 hover:bg-gray-200 btn-sm">
                                         <img className='w-5' src="/myAssets/dots.png" alt="menu" />
                                     </div>
 
@@ -175,7 +181,7 @@ const AllBloodDonationRequests = () => {
                                                 className="btn btn-xs w-full bg-red-500 text-white">Cancelled</button>
                                                 </li>
                                      </ul>
-</div>
+                                </div>
 
                             </th>
                         </tr>)
@@ -183,15 +189,12 @@ const AllBloodDonationRequests = () => {
                     </tbody>
                 </table>
             </div>
-            {/* <div className="join mt-5 flex justify-center">
+             <div className="join mt-5 flex justify-center">
                 {
-                    [...Array(totalPages).keys()].map(num => (
-                    <button key={num} className={`join-item btn ${page === num + 1 ? 'btn-active' : ''}`} onClick={() => setPage(num + 1)}>
-                        {num + 1}
-                    </button>
-                    ))
+                    [...Array(totalPages).keys()].map(p => <button key={p} className={`btn ${page === p + 1 ? 'btn-active' : ''}`} onClick={() => setPage(p + 1)}>{p + 1}</button>
+                    )
                 }
-           </div> */}</> : <p className='text-3xl text-red-600 text-center mt-50 font-semibold'>Donation Request is not Created Yet!!!</p>
+            </div></> : <p className='text-3xl text-blue-600 text-center mt-50 font-bold'>Donation Request is not Created Yet!!!</p>
             }
 
             <dialog id="my_modal_1" className="modal">

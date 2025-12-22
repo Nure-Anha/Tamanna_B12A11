@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import useAxiosSecure from '../CustomHooks/useAxiosSecure';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar, faClock, faHospital } from '@fortawesome/free-regular-svg-icons';
+import useAxios from '../CustomHooks/useAxios';
+import { useNavigate} from 'react-router';
 
 const SearchPage = () => {
 
     // central Localhost 3000 of backend
-    const axiosSecure = useAxiosSecure() ;
+    // const axiosSecure = useAxiosSecure() ;
+    const axiosInstance = useAxios() ;
     
 
     // District and Upazilla data load
@@ -54,15 +56,24 @@ const SearchPage = () => {
 
 
 
-        axiosSecure.get(`/search?bloodGroup=${bloodGroup}&district=${selected_District}&upazilla=${seleted_Upazilla}`)
+        axiosInstance.get(`/search?bloodGroup=${bloodGroup}&district=${selected_District}&upazilla=${seleted_Upazilla}`)
         .then(res => {
             console.log(res.data);
             setDonorFound(res.data) ;
+            setSearchDone(true) ;
             
         })
 
         
     }
+
+    const navigate = useNavigate() ;
+    // handleViewBtn
+    const handleViewBtn = (id) => {
+        navigate(`/blood-donation-request-details/${id}`)
+    }
+
+    const [searchDone , setSearchDone] = useState(false) ;
 
 
     return (
@@ -73,16 +84,16 @@ const SearchPage = () => {
                             <fieldset className="fieldset flex justify-center">
                                 <div>
                                     {/* <label className="label">Blood Group</label> */}
-                                    <select name='bloodGroup' defaultValue="Select a Blood Group" className="select">
+                                    <select name='bloodGroup' defaultValue='Select a Blood Group' className="select">
                                              <option disabled={true}>Select a Blood Group</option>
-                                             <option value="">A+</option>
-                                             <option value="">A-</option>
-                                             <option value="">B+</option>
-                                             <option value="">B-</option>
-                                             <option value="">AB+</option>
-                                             <option value="">AB-</option>
-                                             <option value="">O+</option>
-                                             <option value="">O-</option>
+                                             <option value="A+">A+</option>
+                                             <option value="A-">A-</option>
+                                             <option value="B+">B+</option>
+                                             <option value="B-">B-</option>
+                                             <option value="AB+">AB+</option>
+                                             <option value="AB-">AB-</option>
+                                             <option value="O+">O+</option>
+                                             <option value="O-">O-</option>
                                         </select>
                                 </div>
                                 <div>
@@ -90,7 +101,7 @@ const SearchPage = () => {
                                     <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select">
                                              <option disabled={true}>Select a District</option>
                                              {
-                                                districtData.map(i => <option key={i?.id}>{i?.bn_name} </option>)
+                                                districtData.map(i => <option key={i?.id} value={i?.name}>{i?.name} </option>)
                                              }
                                         </select>
                                 </div>
@@ -99,51 +110,53 @@ const SearchPage = () => {
                                     <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select">
                                              <option disabled={true}>Select an Upazila</option>
                                              {
-                                                upazillaData.map(j => <option key={j?.id}>{j?.bn_name} </option>)
+                                                upazillaData.map(j => <option key={j?.id} value={j?.name} >{j?.name} </option>)
                                              }
                                         </select>
                                 </div>
 
                                 
                             </fieldset>
-                            <button className="btn bg-fuchsia-400 mt-4 ml-130 w-60">Search</button>
+                            <button className="btn bg-red-600 text-white mt-4 ml-130 w-60">Search</button>
                         </form>
                         
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-6'>
                         {
-                            donorFound.map(t => <div key={t?._id} className="card bg-white w-96 shadow-md border border-rose-100 p-3">
+                            donorFound.length !== 0 ? donorFound.map(t => <div key={t?._id} className="card bg-white w-96 shadow-md border border-rose-100 p-3">
                                 <div className="card-body">
                                 <div className="flex justify-between items-center">
 
-                                    <span className="badge bg-red-200 text-sm px-3 py-2"><img className='w-5' src="/public/myAssets/blood-drop.png" alt="" /> {t.Blood_Group}</span>
+                                    <span className="badge bg-red-200 text-sm px-3 py-2"><img className='w-5' src="/public/myAssets/blood-drop.png" alt="" /> {t?.Blood_Group}</span>
 
-                                    <span className={`badge text-sm px-3 py-2 ${ t.Donation_status === 'pending'
+                                    <span className={`badge text-sm px-3 py-2 ${ t?.Donation_status === 'pending'
                                         ? 'bg-sky-400'
-                                        : t.Donation_status === 'inprogress'
+                                        : t?.Donation_status === 'inprogress'
                                         ? 'bg-yellow-400 text-black'
-                                        : t.Donation_status === 'cancelled'
+                                        : t?.Donation_status === 'cancelled'
                                         ? 'bg-red-700 text-white'
-                                        : t.Donation_status === 'done'
+                                        : t?.Donation_status === 'done'
                                         ? 'bg-green-500 text-white'
                                         : ''
-                                    }`}>{t.Donation_status}</span>
+                                    }`}>{t?.Donation_status}</span>
                                 </div>
-                                <h2 className="card-title text-red-700 mt-3">{t.Recipient_Name}</h2>
+                                <h2 className="card-title text-red-700 mt-3">{t?.Recipient_Name}</h2>
 
-                                <p className="text-gray-600"><FontAwesomeIcon icon={faLocationCrosshairs} /> {t.Recipient_District}, {t.Recipient_Upazilla}</p>
+                                <p className="text-gray-600"><FontAwesomeIcon icon={faLocationCrosshairs} /> {t?.Recipient_District}, {t?.Recipient_Upazilla}</p>
 
-                                <p className="text-gray-700"><FontAwesomeIcon icon={faHospital} /> <span className="font-medium">{t.Hospital_Name}</span>
+                                <p className="text-gray-700"><FontAwesomeIcon icon={faHospital} /> <span className="font-medium">{t?.Hospital_Name}</span>
                                 </p>
 
                                 <div className="flex justify-between text-sm text-gray-500 mt-2">
-                                    <span><FontAwesomeIcon icon={faCalendar}/> {t.Donation_Date}</span><span><FontAwesomeIcon icon={faClock} /> {t.Donation_Time}</span>
+                                    <span><FontAwesomeIcon icon={faCalendar}/> {t?.Donation_Date}</span><span><FontAwesomeIcon icon={faClock} /> {t?.Donation_Time}</span>
                                 </div>
 
                                 <div className="card-actions justify-end mt-4">
-                                    <button className="btn btn-sm bg-red-400 hover:bg-red-700 text-white">View Details</button>
+                                    <button onClick={()=>handleViewBtn(t?._id)} className="btn btn-sm bg-rose-600 text-white">View Details</button>
                                 </div>
                                 </div>
-                            </div>)
+                            </div>) : searchDone ? <div className="col-span-full flex justify-center mt-10">
+                                            <p className='text-blue-600 font-bold text-3xl'>No Matched Request Found</p>
+                                        </div> : null
                         }
                         </div>
                         </div>

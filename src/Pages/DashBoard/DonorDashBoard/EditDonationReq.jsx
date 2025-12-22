@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../CustomHooks/useAxiosSecure';
 import { AuthContext } from '../../Authentication/Auth/AuthContext';
 import { useNavigate, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
 const EditDonationReq = () => {
 
@@ -105,7 +106,12 @@ const EditDonationReq = () => {
     axiosSecure.patch(`/edit-donation-request/${id}`, editDonationReqData)
     .then(res => {
         console.log('Edited Donation Request Data :', res.data) ;
-        alert("Donation Request is Updated successfully");
+        // alert("Donation Request is Updated successfully");
+        Swal.fire({
+            title: "Good",
+            text: "Donation request Updated successfully!",
+            icon: "success"
+            });
         navigate("/dashboard/my-donation-requests");
     })
     .catch(err => {
@@ -144,7 +150,7 @@ const EditDonationReq = () => {
                                         <select onChange={handleSelectDistrict}  className="select">
                                              <option value={getValues?.Recipient_District}>{getValues?.Recipient_District}</option>
                                              {
-                                                districtData.map(i => <option key={i?.id}>{i?.bn_name} </option>)
+                                                districtData.map(i => <option key={i?.id}>{i?.name} </option>)
                                              }
                                         </select>
 
@@ -152,7 +158,7 @@ const EditDonationReq = () => {
                                         <select onChange={handleSelectUpazilla} className="select">
                                              <option value={getValues?.Recipient_Upazilla}>{getValues?.Recipient_Upazilla}</option>
                                              {
-                                                upazillaData.map(j => <option key={j?.id}>{j?.bn_name} </option>)
+                                                upazillaData.map(j => <option key={j?.id}>{j?.name} </option>)
                                              }
                                         </select>
 

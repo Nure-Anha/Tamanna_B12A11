@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import { auth } from './Auth/FireBase.config';
 import { updateProfile } from 'firebase/auth';
 import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
@@ -94,6 +95,32 @@ const Register = () => {
         }
 
 
+        // REGEX
+        const upperCase = /[A-Z]/ ;
+        const loweCase = /[a-z]/ ;
+        if(!upperCase.test(pass)) {
+           return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Must have an UpperCase letter in the password!"
+            });
+        }
+        if(!loweCase.test(pass)) {
+           return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Must have an LowerCase letter in the password!"
+            });
+        }
+        if(pass.length < 6) {
+           return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Password Length must be at least 6 character"
+            });
+        }
+
+
         e.target.reset() ;
         // regWithEmailPass
         if(res.data.success == true) {  // jodi image dye thake then.....
@@ -109,6 +136,12 @@ const Register = () => {
                     axiosSecure.post("/users" , formData) 
                     .then(res => {
                         console.log("Posted Registred Users Data to DB :" , res.data) ;
+                        Swal.fire({
+                        title: "Good!",
+                        text: "Account is Registered Successfully!",
+                        icon: "success"
+                        });
+                        navigate('/') ;
                     })
                     .catch(errRegUserData => {
                         console.log("errRegUserData :" , errRegUserData.message) ;
@@ -122,11 +155,17 @@ const Register = () => {
             })
             .catch((error) => {
                 console.log("ErrorMassege" , error.message) ;
+                Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong"
+                        });
             }); 
         }
 
     }
 
+    const navigate = useNavigate() ;
 
 
     return (
@@ -180,7 +219,7 @@ const Register = () => {
                                         <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select">
                                              <option disabled={true}>Select a District</option>
                                              {
-                                                districtData.map(i => <option key={i?.id} value={i?.division_id}>{i?.bn_name} </option>)
+                                                districtData.map(i => <option key={i?.id} value={i?.name}>{i?.name} </option>)
                                              }
                                         </select>
 
@@ -188,7 +227,7 @@ const Register = () => {
                                         <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select">
                                              <option disabled={true}>Select an Upazila</option>
                                              {
-                                                upazillaData.filter(k => k.district_id === selected_District).map(j => <option key={j?.id} value={j?.district_id}>{j?.bn_name} </option>)
+                                                upazillaData.map(j => <option key={j?.id} value={j?.name}>{j?.name} </option>)
                                              }
                                         </select>
 

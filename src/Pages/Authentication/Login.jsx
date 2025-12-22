@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { Link} from 'react-router';
+import { Link, useLocation, useNavigate} from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 
 const Login = () => {
 
     const {signInWithEmailPass} = useContext(AuthContext) ;
 
-    // const location = useLocation() ;
-    // const navigate = useNavigate() ;
+    const location = useLocation() ;
+    const navigate = useNavigate() ;
 
     // handleLogin
     const handleLogin = (e) => {
@@ -24,7 +24,7 @@ const Login = () => {
         signInWithEmailPass(email , pass) 
         .then(res => {
             console.log('Signed In With EmailPass :', res.user) ;
-            // navigate(location.state ? location.state : '/') ;
+            navigate(location.state ? location.state : '/') ;
         })
         .catch((error) => {
             console.log("error sign in :" , error.message) ;
@@ -40,7 +40,7 @@ const Login = () => {
             <div className="hero  min-h-screen">
                 <div className="hero-content flex-col  bg-white md:w-100 lg:w-150 p-10 rounded-2xl shadow-xl">
                     <div>
-                        <h1 className="text-5xl font-bold mb-5 dark:text-black">Login now!</h1>
+                        <h1 className="text-5xl font-bold mb-5 ">Login now!</h1>
                     </div>
 
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

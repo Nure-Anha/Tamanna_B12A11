@@ -103,7 +103,7 @@ const DonorDashHome = () => {
                                     
                                     <button onClick={()=> handleDeleteBtn(k?._id)} className="btn bg-red-500 btn-sm text-white">Delete</button> 
 
-                                    <Link to={'/dashboard/donation-request-details'} className="btn btn-sm bg-violet-500 text-white">View</Link>    
+                                    <Link to={`/blood-donation-request-details/${k?._id}`} className="btn btn-sm bg-violet-500 text-white">View</Link>    
 
                                 {
                                     k?.Donation_status === 'inprogress' ? <div className="dropdown  dropdown-end ">
@@ -123,8 +123,9 @@ const DonorDashHome = () => {
                         }
                     </tbody>
                 </table>
-                <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
-            </div></> : <p className='text-3xl text-red-600 text-center mt-20 font-semibold'>Recent Donation Request is not Created Yet!!!</p>
+            </div> 
+            <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
+            </> : <p className='text-3xl text-blue-600 text-center mt-20 font-bold'>Recently No Donation Request is Created !!!</p>
             }
 
             <dialog id="my_modal_1" className="modal">

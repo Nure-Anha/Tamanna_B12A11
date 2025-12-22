@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Authentication/Auth/AuthContext';
 import useAxiosSecure from '../../../CustomHooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const CreateDonationRequest = () => {
 
@@ -83,7 +84,12 @@ const CreateDonationRequest = () => {
             .then(res => {
                 console.log('Posted Created Donation Request Data :', res.data) ;
                 const insertedId = res.data.insertedId;
-                alert(`Request ID: ${insertedId} , Donation request created successfully!`);
+                // alert(`Request ID: ${insertedId} , Donation request created successfully!`);
+                Swal.fire({
+                    title: `Request ID:${insertedId}`,
+                    text: "Donation request Created successfully!",
+                    icon: "success"
+                    });
             })
             .catch(err => {
                 console.log('error occured for posting Donation req data to backend:' , err.message) ;
@@ -126,7 +132,7 @@ const CreateDonationRequest = () => {
                                         <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select">
                                              <option disabled={true}>Select a District</option>
                                              {
-                                                districtData.map(i => <option key={i?.id}>{i?.bn_name} </option>)
+                                                districtData.map(i => <option key={i?.id}>{i?.name} </option>)
                                              }
                                         </select>
 
@@ -134,7 +140,7 @@ const CreateDonationRequest = () => {
                                         <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select">
                                              <option disabled={true}>Select an Upazila</option>
                                              {
-                                                upazillaData.map(j => <option key={j?.id}>{j?.bn_name} </option>)
+                                                upazillaData.map(j => <option key={j?.id}>{j?.name} </option>)
                                              }
                                         </select>
 
@@ -173,7 +179,7 @@ const CreateDonationRequest = () => {
                             </div>
                         </div>
                     </div>
-                </div> : <p className='text-3xl text-red-500 font-bold'>You are blocked! So You cannot create donation request.</p>
+                </div> : <p className='text-3xl text-blue-500 font-bold'>You are blocked! So You cannot create donation request.</p>
             }
             
         </div>

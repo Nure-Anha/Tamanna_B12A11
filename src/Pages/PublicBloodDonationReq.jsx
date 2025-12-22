@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from 'react';
-import useAxios from '../CustomHooks/UseAxios';
 import { Link, useNavigate } from 'react-router';
+import useAxios from '../CustomHooks/useAxios';
 
 const PublicBloodDonationReq = () => {
 
@@ -21,7 +21,7 @@ const PublicBloodDonationReq = () => {
 
 
     return (
-        <div className="p-10 bg-[#f1f6fa]">
+        <div className="p-20 bg-[#f1f6fa]">
             <title>Blood Donation Requests</title>
 
             <h2 className="text-4xl font-bold text-center mb-20">All Pending Blood Donation Requests</h2>
@@ -52,7 +52,7 @@ const PublicBloodDonationReq = () => {
                                     <td>{r.Donation_Date}</td>
                                     <td>{r.Donation_Time}</td>
                                     <td>
-                                        <button onClick={()=>handleViewBtn(r?._id)} className="btn btn-sm bg-rose-400 text-white hover:bg-red-700">View</button>
+                                        <button onClick={()=>handleViewBtn(r?._id)} className="btn btn-sm bg-rose-600 text-white hover:bg-red-700">View</button>
                                     </td>
                             </tr>)
                             }

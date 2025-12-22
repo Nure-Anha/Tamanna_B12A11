@@ -62,7 +62,7 @@ const AdminDashHome = () => {
                     <img className='w-8' src="/myAssets/mutual-funds.png" alt="" />
                     <h3 className="text-xl font-semibold text-gray-500">Total Fundings</h3>
                 </div>
-                <p className="text-4xl font-bold text-green-600 mt-3"> {totalFunds} </p>
+                <p className="text-4xl font-bold text-green-600 mt-3"> {totalFunds} $ </p>
             </div>
             <div className="bg-white shadow-2xl rounded-2xl p-6 text-center">
                 <div className='flex justify-center items-center gap-x-2'>
