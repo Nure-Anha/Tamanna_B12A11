@@ -12,7 +12,7 @@ const DashboardHome = () => {
         <div className='p-10 rounded-2xl'>
             <title>Dashboard-Home</title>
             <div>
-                <h2 className="text-4xl font-bold text-black "> Welcome , {user?.displayName}!</h2>
+                <h2 className="text-4xl font-bold "> Welcome , {user?.displayName}!</h2>
                 <p className='text-lg font-medium text-gray-400 mt-4'>Manage the platform from here</p>
 
                 {role === "donor" && <DonorDashHome></DonorDashHome>}

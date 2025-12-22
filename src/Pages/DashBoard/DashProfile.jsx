@@ -158,7 +158,7 @@ const DashProfile = () => {
     return (
         <div className='p-10'>
             <title>Profile</title>
-                        <div className='ml-90'>
+                        <div className='sm:ml-20 md:ml-50 lg:ml-90'>
                             <img className='w-20 rounded-full object-cover ml-23' src={profile?.Photo_URL} alt="" />
                             <h1 className="text-4xl font-bold mb-5 ml-10 ">Your Profile</h1>
                         </div>
@@ -169,7 +169,7 @@ const DashProfile = () => {
                     <div className="card-body">
                         {
                             
-                            !edit && <button onClick={handleEditBtn} className="btn ml-33 w-20 bg-red-600 text-white mt-4">Edit</button> 
+                            !edit && <button onClick={handleEditBtn} className="btn ml-17 lg:ml-33 w-20 bg-red-600 text-white mt-4">Edit</button> 
                             
                         }
                         <form onSubmit={handleUpdate}>

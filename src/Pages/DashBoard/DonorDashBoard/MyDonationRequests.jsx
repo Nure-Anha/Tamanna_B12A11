@@ -84,7 +84,7 @@ const MyDonationRequests = () => {
             {
                 recent.length !== 0 ? <><h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
 
-            <div className="mt-15 ml-180">
+            <div className="mt-15 lg:ml-180">
                 <select onChange={handleFilterReq} className="select">
                     <option value="">Filter Donation Requests by Status</option>
                     <option value="pending">Pending</option>

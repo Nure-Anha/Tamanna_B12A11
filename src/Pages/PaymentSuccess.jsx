@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
     return (
         <div className="p-20 flex flex-col items-center bg-[#f1f6fa] min-h-screen">
             <title>Payment Success</title>
-            <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
+            <div className="bg-white p-5 md:p-8 rounded-2xl shadow-2xl w-full max-w-md text-center">
                 <h2 className="text-3xl font-bold text-green-600 mb-4">Payment Successful!</h2>
                 <p className="text-gray-700 mb-6">Thank you for your donation.</p>
 

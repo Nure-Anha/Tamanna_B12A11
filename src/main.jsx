@@ -51,7 +51,6 @@ const router = createBrowserRouter([
     element: <PrivatePage><DashboardLayout></DashboardLayout></PrivatePage> ,
     children: [
       {index:true , Component: DashboardHome} ,
-      {path:'profile' , Component: DashProfile} ,
       {path:'create-donation-request' , Component:CreateDonationRequest} ,
       {path:'my-donation-requests' , Component:MyDonationRequests} ,
       {path:'all-users' , Component:AllUsers} ,

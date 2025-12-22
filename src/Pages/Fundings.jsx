@@ -48,22 +48,22 @@ const Fundings = () => {
 
 
     return (
-        <div  className=' bg-[#f1f6fa] p-10'>
+        <div  className=' bg-[#f1f6fa] p-20'>
             <title>Fundings</title>
 
-            <h2 className="text-4xl font-bold text-center mb-10">All Funding History</h2>
+            <h2 className="text-4xl font-bold text-center mb-10 text-black">All Funding History</h2>
 
                 <div className="flex justify-end mb-4">
-                    <form onSubmit={handleDonateAmount} className='flex ml-260'>
+                    <form onSubmit={handleDonateAmount} className='flex flex-col md:flex-row  lg:ml-100'>
                         <input name='donateamount' type="text" placeholder="Donate Amount" className="input" />
                         <button className='btn bg-red-600  text-white'>Give Fund</button>
                     </form>
                 </div>
 
                 <div className="overflow-x-auto">
-                    <table className="table pl-20 font-semibold mx-auto">
+                    <table className="table w-full min-w-150 mx-auto font-semibold mt-5">
                         {/* head */}
-                        <thead>
+                        <thead className='text-gray-500'>
                             <tr>
                                 <th>#</th>
                                 <th>Donor Name</th>

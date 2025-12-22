@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { faCalendar, faClock } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAxios from '../CustomHooks/useAxios';
+import Swal from 'sweetalert2';
 
 const BloodDonationRequestDetailsPage = () => {
 
@@ -47,6 +48,13 @@ const BloodDonationRequestDetailsPage = () => {
             console.log(res.data) ;
             setDetails({...details , Donation_status: 'inprogress'}) ;
             document.getElementById('my_modal_1').close() ;
+            if(res.data.modifiedCount>0){
+                Swal.fire({
+                title: "Good!",
+                text: "Blood Donation is Inprogress!",
+                icon: "success"
+                });
+            }
         })
         
     }
@@ -55,12 +63,14 @@ const BloodDonationRequestDetailsPage = () => {
     return (
         <div className='p-10 bg-[#f1f6fa]'>
             <title>Blood Donation Request Details</title>
-            <h3 className='text-4xl font-bold mb-20 text-center'>Blood Donation Request Details</h3>
+            <h3 className='text-4xl font-bold mb-20 text-center text-black'>Blood Donation Request Details</h3>
 
             <div className="max-w-xl mx-auto bg-white border border-rose-200 rounded-xl shadow-md">
                 <div className="p-8 space-y-4">
 
-                    <div className={`badge px-8 py-4 font-semibold ml-95 mt-2 ${details?.Donation_status === 'pending' ? 'bg-red-600 text-white' : 'bg-green-600 text-white'}`}>{details?.Donation_status}</div>
+                    <div className={`badge px-8 py-4 font-semibold  lg:ml-95 mt-2 ${details?.Donation_status === 'pending' ? 'bg-red-600 text-white' : 'bg-green-600 text-white'}`}>
+                        {details?.Donation_status}     
+                    </div>
 
                     <h2 className="text-3xl font-bold text-red-700">{details?.Recipient_Name}</h2>
 
@@ -96,7 +106,8 @@ const BloodDonationRequestDetailsPage = () => {
                                         <label className="label">Donor Email</label>
                                         <input type="email" name='donorEmail' className="input" value={user?.email} readOnly />
 
-                                        <button className="btn">Confirm</button>
+                                        <button className="btn bg-rose-500 text-white">Confirm</button>
+                                        <button className="btn" onClick={() => document.getElementById('my_modal_1').close()}>Close</button>
                                     </fieldset>
                                 </form>
                                 
@@ -112,40 +123,3 @@ const BloodDonationRequestDetailsPage = () => {
 };
 
 export default BloodDonationRequestDetailsPage;
-
-/**Blood_Group
-: 
-"AB+"
-Donation_Date
-: 
-"2025-12-18"
-Donation_Time
-: 
-"20:15"
-Donation_status
-: 
-"pending"
-Full_Address
-: 
-"Shahabag , Dhaka"
-Hospital_Name
-: 
-"Dhaka Medical"
-Recipient_District
-: 
-"রাঙ্গামাটি"
-Recipient_Name
-: 
-"Rishdin"
-Recipient_Upazilla
-: 
-"মীরসরাই"
-Requester_Email
-: 
-"nureanha99@gmail.com"
-Requester_Message
-: 
-"An Emergency"
-Requester_Name
-: 
-"Nure Anha" */

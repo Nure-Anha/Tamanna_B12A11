@@ -59,7 +59,7 @@ const AllUsers = () => {
             <div className="overflow-x-auto">
                 <h4 className='text-5xl font-bold text-center mb-15 text-black'>All Users</h4>
 
-                <div className='ml-170 mb-8'>
+                <div className='lg:ml-170 mb-8'>
                     <select onChange={handleFilterStatus} defaultValue="Filter by User Status" className="select">
                         <option value=''>Filter by User Status</option>
                         <option value='active'>Active</option>

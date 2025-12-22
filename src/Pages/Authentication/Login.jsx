@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate} from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -9,6 +10,7 @@ const Login = () => {
     const location = useLocation() ;
     const navigate = useNavigate() ;
 
+    const [error , setError] = useState('') ;
     // handleLogin
     const handleLogin = (e) => {
         e.preventDefault() ;
@@ -19,15 +21,22 @@ const Login = () => {
         console.log("pass: ", pass) ;
 
         e.target.reset() ;
+        setError('')
         
         // signInWithEmailPass
         signInWithEmailPass(email , pass) 
         .then(res => {
             console.log('Signed In With EmailPass :', res.user) ;
+            Swal.fire({
+                title: "Good!",
+                text: "Login Successfully!",
+                icon: "success"
+                });
             navigate(location.state ? location.state : '/') ;
         })
         .catch((error) => {
             console.log("error sign in :" , error.message) ;
+            setError(error.message) ;
         });
 
 
@@ -40,7 +49,7 @@ const Login = () => {
             <div className="hero  min-h-screen">
                 <div className="hero-content flex-col  bg-white md:w-100 lg:w-150 p-10 rounded-2xl shadow-xl">
                     <div>
-                        <h1 className="text-5xl font-bold mb-5 ">Login now!</h1>
+                        <h1 className="text-5xl font-bold mb-5 text-black">Login now!</h1>
                     </div>
 
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -51,6 +60,9 @@ const Login = () => {
                                 <input type="email" name='email' className="input" placeholder="Email" />
                                 <label className="label">Password</label>
                                 <input type="password" name='pass' className="input" placeholder="Password" />
+                                {
+                                    error && <p className='text-red-500'> {error} </p>
+                                }
                                 <div><a className="link link-hover">Forgot password?</a></div>
 
                                 <button className="btn btn-neutral mt-4">Login</button>

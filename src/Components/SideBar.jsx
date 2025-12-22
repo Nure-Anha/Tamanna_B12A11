@@ -20,7 +20,7 @@ const SideBar = () => {
 
     return (
         <div>
-            <aside className=" w-64 bg-red-800 text-white min-h-full flex flex-col">
+            <aside className=" w-full lg:w-64 bg-red-800 text-white min-h-screen flex flex-col">
                 <div className="p-6 text-2xl font-bold border-b border-white">Dashboard</div>
 
                 <nav className="flex-1 p-4">
@@ -127,8 +127,8 @@ const SideBar = () => {
                         </li></>
                         }
                     </ul>
-                    <button onClick={handleLogout} className='btn mt-70 mb-5 w-full'>Logout</button>
-                    <Link to="/"><button className="btn w-full">Back to Home</button></Link>
+                    {/* <button onClick={handleLogout} className='btn mt-55 mb-5 w-full'>Logout</button> */}
+                    <Link to="/"><button className="btn mt-20 lg:mt-55 w-full">Back to Home</button></Link>
                 </nav>
             </aside>
         </div>

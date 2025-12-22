@@ -79,12 +79,12 @@ const SearchPage = () => {
     return (
         <div className='bg-[#f1f6fa] p-10'>
             <title>Search Page</title>
-                <h3 className='text-4xl text-center font-bold mt-5 mb-15'>Search Donors</h3>
+                <h3 className='text-4xl text-center font-bold mt-5 mb-15 text-black'>Search Donors</h3>
                         <form onSubmit={handleSearchSubmit}>
-                            <fieldset className="fieldset flex justify-center">
+                            <fieldset className="fieldset flex justify-center flex-wrap">
                                 <div>
                                     {/* <label className="label">Blood Group</label> */}
-                                    <select name='bloodGroup' defaultValue='Select a Blood Group' className="select">
+                                    <select name='bloodGroup' defaultValue='Select a Blood Group' className="select w-40 sm:w-48 md:w-56 lg:w-64">
                                              <option disabled={true}>Select a Blood Group</option>
                                              <option value="A+">A+</option>
                                              <option value="A-">A-</option>
@@ -98,7 +98,7 @@ const SearchPage = () => {
                                 </div>
                                 <div>
                                     {/* <label className="label">District</label> */}
-                                    <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select">
+                                    <select onChange={handleSelectDistrict} defaultValue='Select a District'  className="select w-40 sm:w-48 md:w-56 lg:w-64">
                                              <option disabled={true}>Select a District</option>
                                              {
                                                 districtData.map(i => <option key={i?.id} value={i?.name}>{i?.name} </option>)
@@ -107,7 +107,7 @@ const SearchPage = () => {
                                 </div>
                                 <div>
                                     {/* <label className="label">Upazilla</label> */}
-                                    <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select">
+                                    <select onChange={handleSelectUpazilla} defaultValue='Select an Upazila'  className="select w-40 sm:w-48 md:w-56 lg:w-64">
                                              <option disabled={true}>Select an Upazila</option>
                                              {
                                                 upazillaData.map(j => <option key={j?.id} value={j?.name} >{j?.name} </option>)
@@ -117,12 +117,14 @@ const SearchPage = () => {
 
                                 
                             </fieldset>
-                            <button className="btn bg-red-600 text-white mt-4 ml-130 w-60">Search</button>
+                            <div className="flex justify-center mt-4">
+                                <button className="btn bg-red-600 text-white w-40 sm:w-48 md:w-56 lg:w-60">Search</button>
+                            </div>
                         </form>
                         
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 gap-6'>
                         {
-                            donorFound.length !== 0 ? donorFound.map(t => <div key={t?._id} className="card bg-white w-96 shadow-md border border-rose-100 p-3">
+                            donorFound.length !== 0 ? donorFound.map(t => <div key={t?._id} className="card bg-white  shadow-md border border-rose-100 p-3">
                                 <div className="card-body">
                                 <div className="flex justify-between items-center">
 
@@ -155,7 +157,7 @@ const SearchPage = () => {
                                 </div>
                                 </div>
                             </div>) : searchDone ? <div className="col-span-full flex justify-center mt-10">
-                                            <p className='text-blue-600 font-bold text-3xl'>No Matched Request Found</p>
+                                            <p className='text-blue-600 font-bold text-3xl text-center'>No Matched Request Found</p>
                                         </div> : null
                         }
                         </div>

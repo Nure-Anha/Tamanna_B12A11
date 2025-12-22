@@ -61,7 +61,7 @@ const DonorDashHome = () => {
         <div>
             <title>Donor-Dashboard-Home</title>
             {
-                recent.length !== 0 ? <><h3 className='text-3xl font-bold text-black text-center mt-10'>Recent Donation Requests</h3>
+                recent.length !== 0 ? <><h3 className='text-3xl font-bold text-center mt-10'>Recent Donation Requests</h3>
             <div className="overflow-x-auto mt-5">
                 <table className="table">
                     {/* head */}
@@ -124,7 +124,7 @@ const DonorDashHome = () => {
                     </tbody>
                 </table>
             </div> 
-            <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
+            <Link to={'/dashboard/my-donation-requests'} className='btn mt-20 ml-15 lg:ml-100 bg-green-600 text-white hover:bg-rose-400'>View My All Request</Link>
             </> : <p className='text-3xl text-blue-600 text-center mt-20 font-bold'>Recently No Donation Request is Created !!!</p>
             }
 

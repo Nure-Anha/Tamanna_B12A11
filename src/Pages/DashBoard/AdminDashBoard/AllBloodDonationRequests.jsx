@@ -88,7 +88,7 @@ const AllBloodDonationRequests = () => {
             {
                 recent.length !== 0 ? <><h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
 
-            <div className="mt-15 ml-180">
+            <div className="mt-15 lg:ml-180">
                 <select onChange={handleFilterReq} className="select">
                     <option value="">Filter Donation Requests by Status</option>
                     <option value="pending">Pending</option>
@@ -163,7 +163,7 @@ const AllBloodDonationRequests = () => {
                                     </ul>
                                 </div> 
                                 } */}
-                                <div className="dropdown dropdown-end ml-12">
+                                <div className="dropdown dropdown-end lg:ml-12">
                                     <div tabIndex={0} className="btn border bg-transparent mt-2 p-4 hover:bg-gray-200 btn-sm">
                                         <img className='w-5' src="/myAssets/dots.png" alt="menu" />
                                     </div>

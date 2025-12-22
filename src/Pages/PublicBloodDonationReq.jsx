@@ -21,10 +21,10 @@ const PublicBloodDonationReq = () => {
 
 
     return (
-        <div className="p-20 bg-[#f1f6fa]">
+        <div className="p-20 bg-[#f1f6fa] text-black">
             <title>Blood Donation Requests</title>
 
-            <h2 className="text-4xl font-bold text-center mb-20">All Pending Blood Donation Requests</h2>
+            <h2 className="text-4xl font-bold text-center mb-20">All Blood Donation Requests</h2>
 
                 <div className="overflow-x-auto bg-white shadow-2xl rounded-lg mt-10">
                     <table className="table">
