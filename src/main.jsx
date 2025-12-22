@@ -24,12 +24,14 @@ import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 import SearchPage from './Pages/SearchPage.jsx';
 import PublicBloodDonationReq from './Pages/PublicBloodDonationReq.jsx';
 import BloodDonationRequestDetailsPage from './Pages/BloodDonationRequestDetailsPage.jsx';
+import ErrorPage from './Pages/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/" ,
     Component: Root ,
+    errorElement: <ErrorPage></ErrorPage> ,
     children: [
       {index:true , Component:Home} ,
       {path:'register' , Component:Register} ,
