@@ -9,7 +9,7 @@ const AuthProvider = ({children}) => {
 
     // loading
     const [loading , setLoading] = useState(true) ;
-    const [roleLoading , setRoleLoading] = useState(true) ;
+    // const [roleLoading , setRoleLoading] = useState(true) ;
     const axiosInstance = useAxios()
 
 
@@ -46,26 +46,39 @@ const AuthProvider = ({children}) => {
 
     // My Get_Role functionality for specific email
     const [role , setRole] = useState('') ;
-    const [status , setStatus] = useState('') ;
-    useEffect(()=>{
-        if(!user) {
-            return ;
-        }
-        axiosInstance.get(`/users/${user?.email}`)  //dom
+    // const [status , setStatus] = useState('') ;
+    // useEffect(()=>{
+    //     if(!user) {
+    //         return ;
+    //     }
+    //     axiosInstance.get(`/users/${user?.email}`)  //dom
+    //     .then(res => {
+    //         console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
+    //         setRole(res.data.role) ;
+    //         setRoleLoading(false) ;
+    //         console.log("matched email's Status got:" , res.data.status) ;
+    //         setStatus(res.data.status) ;
+    //     })
+    //     .catch(err => {
+    //         console.log("Error matched email", err) ;
+    //     }) 
+    // } , [user , axiosInstance])
+    const [status, setStatus] = useState('');
+const [roleLoading, setRoleLoading] = useState(true);
+
+useEffect(() => {
+    if (!user) return;
+    axiosInstance.get(`/users/${user?.email}`)
         .then(res => {
-            console.log("matched email's Role got:" , res.data.role) ;  // Role retrieve globally for use anywhere
-            setRole(res.data.role) ;
-            setRoleLoading(false) ;
-            console.log("matched email's Status got:" , res.data.status) ;
-            setStatus(res.data.status) ;
+            setRole(res.data.role);
+            setStatus(res.data.status);
+            setRoleLoading(false);
         })
-        .catch(err => {
-            console.log("Error matched email", err) ;
-        }) 
-    } , [user , axiosInstance])
+        .catch(err => console.log(err));
+}, [user, axiosInstance]);
 
-
-    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading , roleLoading}
+    const ready = !loading && !roleLoading && !!status;
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading , roleLoading , ready}
 
 
     return (

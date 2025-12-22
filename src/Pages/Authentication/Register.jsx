@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import { auth } from './Auth/FireBase.config';
 import { updateProfile } from 'firebase/auth';
-import useAxiosSecure from '../../CustomHooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAxios from '../../CustomHooks/useAxios';
 
 const Register = () => {
 
     const {regWithEmailPass} = useContext(AuthContext) ;
     // central Localhost 3000 of backend
-    const axiosSecure = useAxiosSecure() ;
+    const axiosInstance = useAxios() ;
     
 
     // District and Upazilla data load
@@ -133,9 +133,15 @@ const Register = () => {
                     // Profile updated!
 
                     // registered user data post into db*******************************
-                    axiosSecure.post("/users" , formData) 
+                    axiosInstance.post("/users" , formData) 
                     .then(res => {
                         console.log("Posted Registred Users Data to DB :" , res.data) ;
+                        const checkReady = setInterval(() => {
+        if (auth.ready && auth.status === "active") {
+            clearInterval(checkReady);
+            navigate('/privatepage'); 
+        }
+    }, 100);
                         Swal.fire({
                         title: "Good!",
                         text: "Account is Registered Successfully!",

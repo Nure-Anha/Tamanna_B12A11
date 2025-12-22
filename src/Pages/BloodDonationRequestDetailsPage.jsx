@@ -107,7 +107,7 @@ const BloodDonationRequestDetailsPage = () => {
                                         <input type="email" name='donorEmail' className="input" value={user?.email} readOnly />
 
                                         <button className="btn bg-rose-500 text-white">Confirm</button>
-                                        <button className="btn" onClick={() => document.getElementById('my_modal_1').close()}>Close</button>
+                                        {/* <button className="btn" onClick={() => document.getElementById('my_modal_1').close()}>Close</button> */}
                                     </fieldset>
                                 </form>
                                 

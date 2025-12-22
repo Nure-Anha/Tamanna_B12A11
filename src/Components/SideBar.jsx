@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import {Link, NavLink,} from 'react-router';
 import { AuthContext } from '../Pages/Authentication/Auth/AuthContext';
-import { signOut } from 'firebase/auth';
-import { auth } from '../Pages/Authentication/Auth/FireBase.config';
+// import { signOut } from 'firebase/auth';
+// import { auth } from '../Pages/Authentication/Auth/FireBase.config';
 
 const SideBar = () => {
 
@@ -10,13 +10,13 @@ const SideBar = () => {
 
 
     // handleLogout
-        const handleLogout = () => {
-            signOut(auth).then(() => {
-            // Sign-out successful.
-            }).catch((error) => {
-            console.log(error) ;
-            });
-        }
+        // const handleLogout = () => {
+        //     signOut(auth).then(() => {
+        //     // Sign-out successful.
+        //     }).catch((error) => {
+        //     console.log(error) ;
+        //     });
+        // }
 
     return (
         <div>
