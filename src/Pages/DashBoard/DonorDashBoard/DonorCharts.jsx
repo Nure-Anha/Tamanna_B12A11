@@ -24,7 +24,7 @@ const DonorCharts = ({ stats }) => {
 
       {/* 🥧 PIE CHART */}
       <div className="bg-white rounded-xl shadow p-6">
-        <h3 className="text-xl font-semibold mb-4">
+        <h3 className="text-xl font-semibold mb-4 text-black">
           Completion Ratio
         </h3>
 

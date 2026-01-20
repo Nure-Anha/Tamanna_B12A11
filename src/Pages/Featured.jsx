@@ -28,7 +28,7 @@ const Featured = () => {
 
 
     return (
-        <div className='bg-rose-200 mt-30 pb-20 py-16 px-6'>
+        <div className='bg-rose-200 pt-30 pb-20 py-16 px-6'>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
                     <div>
                         <h2 className="text-4xl font-bold text-red-700 mb-4">One Donation Can Save Three Lives</h2>

@@ -20,12 +20,12 @@ const PublicBloodDonationReq = () => {
     navigate(`/blood-donation-request-details/${id}`);
   };
 
-  /* 🔍 Extract unique districts for filter */
+ 
   const districts = [
     ...new Set(requests.map((r) => r.Recipient_District)),
   ];
 
-  /* 🔎 Filter Logic */
+
   const filteredRequests = requests.filter((r) => {
     const matchesName = r.Recipient_Name.toLowerCase().includes(
       searchText.toLowerCase()
@@ -46,20 +46,20 @@ const PublicBloodDonationReq = () => {
         All Blood Donation Requests
       </h2>
 
-      {/* 🔍 Search & Filter Section */}
+     
       <div className="flex flex-col md:flex-row gap-4 mb-8 justify-between">
         {/* Search by Recipient Name */}
         <input
           type="text"
-          placeholder="Search by recipient name..."
-          className="input input-bordered w-full md:w-1/2"
+          placeholder="Search by recipient name"
+          className="input input-bordered w-full md:w-1/2 text-base-content"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
 
         {/* Filter by District */}
         <select
-          className="select select-bordered w-full md:w-1/3"
+          className="select select-bordered w-full md:w-1/3 text-base-content"
           value={selectedDistrict}
           onChange={(e) => setSelectedDistrict(e.target.value)}
         >

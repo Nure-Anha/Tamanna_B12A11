@@ -10,13 +10,13 @@ const NavBar = () => {
 
     // links 
     const links = <>
-    <li className='font-bold text-base-content'><NavLink to={"/"}>Home</NavLink></li>
-    <li className='font-bold text-base-content'><NavLink to={"/public-blood-donation-requests"}>Donation Requests</NavLink></li> 
-    <li className='font-bold text-base-content'><NavLink to={"/about-us"}>About Us</NavLink></li> 
+    <li className='font-bold text-black'><NavLink to={"/"}>Home</NavLink></li>
+    <li className='font-bold text-black'><NavLink to={"/public-blood-donation-requests"}>Donation Requests</NavLink></li> 
+    <li className='font-bold text-black'><NavLink to={"/about-us"}>About Us</NavLink></li> 
     {
         user && <>
-        <li className='font-bold text-base-content'><NavLink to={"/fundings"}>Fundings</NavLink></li>
-        <li  className='font-bold text-base-content'><NavLink to={"/become-donor"}>Become a Donor</NavLink></li> 
+        <li className='font-bold text-black'><NavLink to={"/fundings"}>Fundings</NavLink></li>
+        <li  className='font-bold text-black'><NavLink to={"/become-donor"}>Become a Donor</NavLink></li> 
         </> 
     } 
     {/* <li className='font-bold text-base-content'><NavLink to={"/search-page"}>Search</NavLink></li>  */}

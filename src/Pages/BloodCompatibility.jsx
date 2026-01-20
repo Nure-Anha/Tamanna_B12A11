@@ -47,7 +47,7 @@ const bloodData = [
 
 const BloodCompatibility = () => {
   return (
-    <section className="py-10 bg-base-100">
+    <section className="py-10 bg-white">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Section Header */}
@@ -68,14 +68,14 @@ const BloodCompatibility = () => {
             <div
               key={item.group}
               className={`rounded-xl p-6 shadow-md border 
-                ${item.highlight ? "border-red-500 bg-red-50" : "bg-base-200"}
+                ${item.highlight ? "border-red-500 bg-red-50" : "bg-white"}
               `}
             >
               <h3 className="text-3xl font-bold text-center text-red-600 mb-4">
                 {item.group}
               </h3>
 
-              <div className="text-sm text-gray-700 space-y-3">
+              <div className=" text-sm text-gray-700 space-y-3">
                 <p>
                   <span className="font-semibold">Can Donate To:</span><br />
                   {item.donateTo}

@@ -26,7 +26,7 @@ const DonorOverviewCards = () => {
   return (
     
     <div className='mb-20'>
-    <p className="text-2xl font-bold text-gray-800 text-center pt-10">Blood Donation Activity</p>
+    <p className="text-2xl font-bold text-center pt-10 text-base-content">Blood Donation Activity</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-5">
 

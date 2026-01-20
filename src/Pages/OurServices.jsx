@@ -24,7 +24,7 @@ const OurServices = () => {
         {/* Right Icons */}
         <div className="lg:w-1/2 flex flex-col gap-6">
           {services.map((item, index) => (
-            <div key={index} className="flex items-center gap-4">
+            <div key={index} className="flex items-center gap-4 text-black">
               <img src={item.icon} alt={item.title} className="w-5 h-5" />
               <h3 className="text-xl font-semibold">{item.title}</h3>
             </div>

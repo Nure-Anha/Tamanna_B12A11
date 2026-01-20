@@ -8,7 +8,7 @@ const faqs = [
 ];
 
 const FAQ = () => (
-  <section className="py-20 bg-base-200">
+  <section className="py-20 bg-white text-black">
     <div className="max-w-4xl mx-auto px-4">
       <h2 className="text-4xl font-bold text-red-600 text-center mb-12">FAQ</h2>
       <div className="space-y-4">

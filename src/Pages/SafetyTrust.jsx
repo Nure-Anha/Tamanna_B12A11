@@ -7,12 +7,12 @@ const trustSteps = [
 ];
 
 const SafetyTrust = () => (
-  <section className="py-20 bg-base-200">
+  <section className="py-20 bg-white">
     <div className="max-w-4xl mx-auto px-4">
       <h2 className="text-4xl font-bold text-red-600 text-center mb-12">Safety & Trust</h2>
       <div className="relative border-l-2 border-red-600  pl-6">
         {trustSteps.map((item, index) => (
-          <div key={index} className="mb-10 relative">
+          <div key={index} className="mb-10 relative text-black">
             <div className="absolute -left-7 top-0 w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white">
               <img src={item.icon} alt={item.title} className="w-6 h-6" />
             </div>

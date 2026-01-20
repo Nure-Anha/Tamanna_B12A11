@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const BecomeDonor = () => {
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-white">
 
       {/* Hero with Gradient */}
       <div className="bg-linear-to-r from-rose-300 to-red-600 text-white py-30 px-4">
@@ -12,7 +12,7 @@ const BecomeDonor = () => {
             Become a Blood Donor
           </h1>
           <p className="mt-4 text-lg opacity-90 max-w-3xl mx-auto">
-            Your small act of kindness can become someone’s second chance at
+            Your small act of kindness can become someone's second chance at
             life. Join LifeDrop and make a real impact today.
           </p>
         </div>
@@ -46,7 +46,7 @@ const BecomeDonor = () => {
       </div>
 
       {/* Eligibility as Checklist */}
-      <div className="bg-base-200 py-16 px-4">
+      <div className="bg-red-50 py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-red-600 mb-10">
             Are You Eligible?
@@ -61,7 +61,7 @@ const BecomeDonor = () => {
             ].map((rule, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 bg-base-100 p-5 rounded-lg shadow"
+                className="flex items-center gap-4 bg-white p-5 rounded-lg shadow"
               >
                 <span className="text-green-600 text-2xl">✔</span>
                 <p className="text-gray-700">{rule}</p>
@@ -73,7 +73,7 @@ const BecomeDonor = () => {
 
       {/* Final CTA */}
       <div className="py-20 px-4 text-center">
-        <h2 className="text-3xl font-bold mb-4">
+        <h2 className="text-3xl font-bold mb-4 text-black">
           Someone Needs You Today
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-6">

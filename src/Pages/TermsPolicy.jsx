@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsPolicy = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20">
+    <div className="max-w-8xl mx-auto px-20 py-20 bg-white">
       {/* Page Title */}
       <h1 className="text-4xl lg:text-5xl font-bold text-red-600 mb-8 text-center">
         Terms & Policy

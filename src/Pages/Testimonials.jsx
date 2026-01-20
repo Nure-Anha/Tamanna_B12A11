@@ -18,10 +18,10 @@ const Testimonials = () => {
         <h2 className="text-4xl font-bold text-red-600 mb-8">Testimonials</h2>
         <div className="relative">
           <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 p-2 bg-red-600 text-white rounded-full">◀</button>
-          <div className="bg-base-100 p-10 rounded-xl shadow-md">
+          <div className="bg-white p-10 rounded-xl shadow-md">
             
             <p className="text-gray-700 mb-2">"{testimonials[index].message}"</p>
-            <h3 className="font-semibold">{testimonials[index].name}</h3>
+            <h3 className="font-semibold text-black">{testimonials[index].name}</h3>
             <p className="text-red-600">{testimonials[index].role}</p>
           </div>
           <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-red-600 text-white rounded-full">▶</button>
