@@ -54,7 +54,7 @@ const AllUsers = () => {
 
 
     return (
-        <div className='p-10'>
+        <div className='p-10 bg-white'>
             <title>Admin - All Users</title>
             <div className="overflow-x-auto">
                 <h4 className='text-5xl font-bold text-center mb-15 text-black'>All Users</h4>

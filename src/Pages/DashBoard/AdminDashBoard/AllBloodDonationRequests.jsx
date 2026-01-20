@@ -86,7 +86,7 @@ const AllBloodDonationRequests = () => {
             <title>All Blood Donation Request</title>
 
             {
-                recent.length !== 0 ? <><h3 className='text-4xl font-bold text-black text-center mt-15'>Your All Donation Requests</h3>
+                recent.length !== 0 ? <><h3 className='text-4xl font-bold text-base-content text-center mt-15'>Your All Donation Requests</h3>
 
             <div className="mt-15 lg:ml-180">
                 <select onChange={handleFilterReq} className="select">
