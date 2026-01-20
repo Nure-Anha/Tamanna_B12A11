@@ -53,6 +53,9 @@ const Slider = () => {
                         </div>
                     </SwiperSlide>
                 </Swiper>
+                <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 z-300 animate-bounce">
+                    <img className='w-10' src="/myAssets/arrow.png" alt="" />
+                </div>
             </>
         </div>
     );

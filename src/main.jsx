@@ -25,6 +25,11 @@ import SearchPage from './Pages/SearchPage.jsx';
 import PublicBloodDonationReq from './Pages/PublicBloodDonationReq.jsx';
 import BloodDonationRequestDetailsPage from './Pages/BloodDonationRequestDetailsPage.jsx';
 import ErrorPage from './Pages/ErrorPage.jsx';
+import About from './Pages/About.jsx';
+import BecomeDonor from './Pages/BecomeDonor.jsx';
+import Testimonials from './Pages/Testimonials.jsx';
+import ContactUs from './Pages/ContactUs.jsx';
+import TermsPolicy from './Pages/TermsPolicy.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,10 +42,16 @@ const router = createBrowserRouter([
       {path:'register' , Component:Register} ,
       {path:'login' , Component:Login} ,
       {path:'fundings' , element: <PrivatePage><Fundings></Fundings></PrivatePage>} ,
+      {path:'become-donor' , element: <PrivatePage><BecomeDonor></BecomeDonor></PrivatePage>} ,
       {path:'payment-success' , Component:PaymentSuccess} ,
       {path:'search-page' , Component:SearchPage} ,
       {path:'public-blood-donation-requests' , Component:PublicBloodDonationReq} ,
-      {path:'blood-donation-request-details/:id' , element: <PrivatePage><BloodDonationRequestDetailsPage></BloodDonationRequestDetailsPage></PrivatePage>} ,
+      {path:'about-us' , Component:About} ,
+      {path:'testimonials' , Component:Testimonials} ,
+      {path:'contact-us' , Component:ContactUs} ,
+      {path:'terms-policy' , Component:TermsPolicy} ,
+      // {path:'blood-donation-request-details/:id' , element: <PrivatePage><BloodDonationRequestDetailsPage></BloodDonationRequestDetailsPage></PrivatePage>} ,
+      {path:'blood-donation-request-details/:id' , element: <BloodDonationRequestDetailsPage></BloodDonationRequestDetailsPage>} ,
     ]
   },
 

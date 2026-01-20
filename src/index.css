@@ -20,21 +20,34 @@ li a.active {
 
 /* SLIDERRRRR */
 .swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 65vh;        /* default */
+  max-height: 520px;  /* LIMIT HEIGHT */
   text-align: center;
-  font-size: 18px;
-  background: #444;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
+
+@media (max-width: 640px) {
+  .swiper-slide {
+    height: 55vh;
+    max-height: 420px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .swiper-slide {
+    height: 65vh;
+    max-height: 560px;
+  }
+}
+
 
 .swiper-slide img {
   width: 100%;
-  height: 500px;
-  object-fit: cover;
+  height: 100%;        /* IMPORTANT */
+  object-fit: cover;  /* Now it works correctly */
 }
+
 
 .swiper-pagination-bullet {
   width: 20px;

@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate} from 'react-router';
 import { AuthContext } from './Auth/AuthContext';
 import Swal from 'sweetalert2';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 
-    const {signInWithEmailPass} = useContext(AuthContext) ;
+    const {signInWithEmailPass , signInWithGoogle} = useContext(AuthContext) ;
 
     const location = useLocation() ;
     const navigate = useNavigate() ;
@@ -15,12 +16,12 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault() ;
 
-        const email = e.target.email.value ;
-        console.log("email: ", email) ;
-        const pass = e.target.pass.value ;
-        console.log("pass: ", pass) ;
+        // const email = e.target.email.value ;
+        // console.log("email: ", email) ;
+        // const pass = e.target.pass.value ;
+        // console.log("pass: ", pass) ;
 
-        e.target.reset() ;
+        // e.target.reset() ;
         setError('')
         
         // signInWithEmailPass
@@ -42,6 +43,37 @@ const Login = () => {
 
     }
 
+    // handleGoogleSignIn
+    const handleGoogleSignIn = () => {
+        
+        //signInWithGoogle
+        signInWithGoogle()
+        .then((resG) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        console.log("New User Registered by Google: ", resG.user) ;
+        Swal.fire({
+        title: "Good!",
+        text: "Login Successfully!",
+        icon: "success"
+        });
+        navigate(location.state ? location.state : '/') ;
+        // ...
+        }).catch((errG) => {
+        // Handle Errors here.
+        console.log(errG.code);
+        console.log(errG.message);
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong"
+        });
+        });
+    }
+
+    // demo creditials
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+
 
     return (
         <div className='bg-[#f1f6fa] '>
@@ -57,15 +89,30 @@ const Login = () => {
                         <form onSubmit={handleLogin}>
                             <fieldset className="fieldset">
                                 <label className="label">Email</label>
-                                <input type="email" name='email' className="input" placeholder="Email" />
+                                <input onChange={e => setEmail(e.target.value)} type="email" name='email' value={email} className="input" placeholder="Email" />
                                 <label className="label">Password</label>
-                                <input type="password" name='pass' className="input" placeholder="Password" />
+                                <input onChange={(e) => setPass(e.target.value)} type='password' name='pass' value={pass} className="input" placeholder="Password" />
                                 {
                                     error && <p className='text-red-500'> {error} </p>
                                 }
                                 <div><a className="link link-hover">Forgot password?</a></div>
 
+                                 {/* demo login */}
+                                <div className="mt-4 space-y-2">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                        setEmail("demo@lifedrop.com");
+                                        setPass("Demo1234");
+                                        }}
+                                        className="btn btn-outline w-full">
+                                        Login as Demo User
+                                    </button>
+                                </div>
+
                                 <button className="btn btn-neutral mt-4">Login</button>
+
+                                <button type='button' onClick={handleGoogleSignIn} className="btn mt-4 text-gray-700"><FcGoogle className='text-2xl' />Login With Google</button>
                             </fieldset>
                         </form>
                         <p className='text-md font-medium text-center'>Don't have an account?<Link className='text-blue-600 font-bold' to={'/register'}> Register here</Link></p>

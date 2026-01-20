@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
     return (
-        <div className="bg-[#f1f6fa] pb-20 py-16 px-6">
+        <div className="bg-[#f1f6fa] pb-20 py-20 px-6">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-4xl font-bold text-center text-red-700 mb-10">Contact Us</h2>
 
@@ -15,13 +15,13 @@ const ContactUs = () => {
                                 <p className='flex gap-x-3'>
                                     <img className='w-6' src="/public/myAssets/emergency-phone.png" alt="" />
                                     <div>
-                                        <a href=""><span className="font-medium">Phone:</span> +880 1714872119</a>
+                                        <a href=""><span className="font-medium">Phone:</span> +880 1836349141</a>
                                     </div>
                                 </p>
                                 <p className='flex gap-x-3'>
                                     <img className='w-6' src="/public/myAssets/gmail.png" alt="" />
                                     <div>
-                                        <a href=""><span className="font-medium">Email:</span> support@lifedrop.org</a>
+                                        <a href=""><span className="font-medium">Email:</span> nureanha99@gmail.com</a>
                                     </div>
                                 </p>
                                 <p className='flex gap-x-3'>

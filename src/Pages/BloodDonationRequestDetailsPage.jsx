@@ -100,19 +100,29 @@ const BloodDonationRequestDetailsPage = () => {
                         <dialog id="my_modal_1" className="modal">
                             <div className="modal-box">
                                 <form onSubmit={handleConfirmSubmit}>
-                                    <fieldset className="fieldset">
-                                        <label className="label">Donor Name</label>
-                                        <input type="text" name='donorName' className="input" value={user?.displayName} readOnly/>
-                                        <label className="label">Donor Email</label>
-                                        <input type="email" name='donorEmail' className="input" value={user?.email} readOnly />
+                                <fieldset className="fieldset">
+                                    <label className="label">Donor Name</label>
+                                    <input type="text" name='donorName' className="input" value={user?.displayName} readOnly/>
+                                    <label className="label">Donor Email</label>
+                                    <input type="email" name='donorEmail' className="input" value={user?.email} readOnly />
 
-                                        <button className="btn bg-rose-500 text-white">Confirm</button>
-                                        {/* <button className="btn" onClick={() => document.getElementById('my_modal_1').close()}>Close</button> */}
-                                    </fieldset>
+                                    <div className="flex justify-end gap-3 mt-4">
+                                    <button type="submit" className="btn bg-rose-500 text-white">
+                                        Confirm
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className="btn bg-gray-300 text-black"
+                                        onClick={() => document.getElementById('my_modal_1').close()}
+                                    >
+                                        Cancel
+                                    </button>
+                                    </div>
+                                </fieldset>
                                 </form>
-                                
-                                </div>
-                        </dialog>
+                            </div>
+</dialog>
+
 
 
                 </div>

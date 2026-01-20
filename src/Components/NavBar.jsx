@@ -12,8 +12,12 @@ const NavBar = () => {
     const links = <>
     <li className='font-bold text-base-content'><NavLink to={"/"}>Home</NavLink></li>
     <li className='font-bold text-base-content'><NavLink to={"/public-blood-donation-requests"}>Donation Requests</NavLink></li> 
+    <li className='font-bold text-base-content'><NavLink to={"/about-us"}>About Us</NavLink></li> 
     {
-        user && <li className='font-bold text-base-content'><NavLink to={"/fundings"}>Fundings</NavLink></li>
+        user && <>
+        <li className='font-bold text-base-content'><NavLink to={"/fundings"}>Fundings</NavLink></li>
+        <li  className='font-bold text-base-content'><NavLink to={"/become-donor"}>Become a Donor</NavLink></li> 
+        </> 
     } 
     {/* <li className='font-bold text-base-content'><NavLink to={"/search-page"}>Search</NavLink></li>  */}
     </>
@@ -28,7 +32,7 @@ const NavBar = () => {
     }
     return (
         <div>
-            <div className="navbar  shadow-sm">
+            <div className="navbar bg-red-100  shadow-sm fixed top-0 z-50 w-full">
                 <div className="navbar-start">
                     <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,8 +48,8 @@ const NavBar = () => {
                     </div>
 
                     <div className='flex'>
-                        <img className='w-12 h-12 mt-2.5' src="/myAssets/blood-donation_Logo.png" alt="" />
-                        <Link className="text-3xl lg:text-5xl font-bold h-14 bg-linear-65 from-red-500 to-rose-700 bg-clip-text text-transparent mt-2" to={'/'}>LifeDrop</Link>
+                        <img className='w-10 h-10 mt-2.5' src="/myAssets/blood-donation_Logo.png" alt="" />
+                        <Link className="text-3xl lg:text-5xl font-bold h-14 bg-linear-65 from-red-500 to-rose-700 bg-clip-text text-transparent " to={'/'}>LifeDrop</Link>
                     </div>
 
                 </div>
@@ -71,8 +75,8 @@ const NavBar = () => {
 
                         <ul className="dropdown menu rounded-box bg-base-100 shadow-sm space-y-2"
                         popover="auto" id="popover-1" style={{ positionAnchor: "--anchor-1" } /* as React.CSSProperties */ }>
-                        <Link className='btn hover:bg-rose-600 hover:text-white mt-1' to={'/dashboard'}>Dashboard</Link> <br />
-                        <button onClick={handleLogout} className="btn btn-neutral px-7 mt-1">Logout</button>
+                        <Link className='btn hover:bg-rose-300  mt-1' to={'/dashboard'}>Dashboard</Link> <br />
+                        <button onClick={handleLogout} className="btn bg-red-600 text-white px-7 mt-1">Logout</button>
                         </ul>
                     </div> 
                     : <Link className="btn border-red-600 hover:bg-red-600 hover:text-white" to={'/login'}>Login</Link>

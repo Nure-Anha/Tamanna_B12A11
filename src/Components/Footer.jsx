@@ -1,8 +1,9 @@
-import { faFacebook, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faLinkedin, faWhatsapp, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faLocationArrow, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router';
 
 const Footer = () => {
     return (
@@ -18,9 +19,22 @@ const Footer = () => {
 
             <nav>
                     <h6 className="footer_title_heading">CONTACT US</h6>
-                    <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faEnvelope} /> support@lifedrop.com</a>
+                    <p className="flex items-center gap-2 mb-2">
+            <FontAwesomeIcon icon={faEnvelope} />{" "}
+            <a
+              href="mailto:support@lifedrop.com"
+              className="hover:text-red-600"
+            >
+              nureanha99@gmail.com
+            </a>
+          </p>
                     <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faLocationArrow} /> Road-2,3/A Middle Badda, <br />Dhaka-1212 , Bangladesh</a>
-                    <a className='hover:text-red-600' href=""><FontAwesomeIcon icon={faPhone} /> Call: (+880) 1917896335</a>
+                    <p className="flex items-center gap-2 mb-2">
+            <FontAwesomeIcon icon={faPhone} />{" "}
+            <a href="tel:+8801836349141" className="hover:text-red-600">
+              (+880) 1836349141
+            </a>
+          </p>
                     
             </nav>
 
@@ -28,19 +42,10 @@ const Footer = () => {
                 <h6 className="footer_title_heading mb-4">SUPPORT LINKS</h6>
                 <div className="flex flex-col md:flex-row gap-10">
                     <div className="flex flex-col gap-2">
-                        <a className="hover:text-red-600" href="">Thalassemia</a>
-                        <a className="hover:text-red-600" href="">Myelodysplasia</a>
-                        <a className="hover:text-red-600" href="">Hemolytimia</a>
-                        <a className="hover:text-red-600" href="">Hypercoagulable</a>
-                        <a className="hover:text-red-600" href="">Sicklenemiaxs</a>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                        <a className="hover:text-red-600" href="">Cell Elofrosis</a>
-                        <a className="hover:text-red-600" href="">Blood Count</a>
-                        <a className="hover:text-red-600" href="">Ychromas Eosis</a>
-                        <a className="hover:text-red-600" href="">Thrombo Xtosis</a>
-                        <a className="hover:text-red-600" href="">Aplastic Anemia</a>
+                        <Link className="hover:text-red-600" to={'/about-us'}>About Us</Link>
+                        <Link className="hover:text-red-600" to={'/testimonials'}>Feedback</Link>
+                        <Link className="hover:text-red-600" to={'/contact-us'}>Contact Us</Link>
+                        <Link className="hover:text-red-600" to={'/terms-policy'}>Terms & Policy</Link>
                     </div>
                 </div>
             </nav>
@@ -49,9 +54,9 @@ const Footer = () => {
             <nav>
                 <h6 className="footer_title_heading">SOCIAL</h6>
                 <div className="grid grid-flow-col gap-4">
-                    <a className='text-4xl' href=""><FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon></a>
-                    <a className='text-4xl hover:text-red-600' href=""><FontAwesomeIcon icon={faYoutube}></FontAwesomeIcon></a>
-                    <a className='text-4xl hover:text-blue-400' href=""><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
+                    <a className='text-4xl' href="https://www.linkedin.com/in/nure-anha-41892a1b8/" target='blank'><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
+                    <a className='text-4xl' href="https://wa.me/8801836349141" target='blank'><FontAwesomeIcon icon={faWhatsapp}></FontAwesomeIcon></a>
+                    <a className='text-4xl' href="https://www.facebook.com/handi.ercel.77/" target='blank'><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
                 </div>
             </nav>
     </footer>

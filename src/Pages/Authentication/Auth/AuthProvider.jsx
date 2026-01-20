@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { auth } from './FireBase.config';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import useAxios from '../../../CustomHooks/useAxios';
 
 
@@ -21,6 +21,19 @@ const AuthProvider = ({children}) => {
     const signInWithEmailPass = (email , pass) => {
         return signInWithEmailAndPassword(auth, email, pass)
     }
+
+     // To sign in with a pop-up window, call signInWithPopup
+    const Googleprovider = new GoogleAuthProvider();
+    const signInWithGoogle = () => {
+        return signInWithPopup(auth, Googleprovider) ;
+    }
+
+    // To sign out a user
+    const signOutGoogle  = () => {
+        return signOut(auth)
+    }
+
+
     // updateProfile
     const [user , setUser] = useState(null) ;
      const updateProfile = (name , photo) => {
@@ -78,7 +91,7 @@ useEffect(() => {
 }, [user, axiosInstance]);
 
     const ready = !loading && !roleLoading && !!status;
-    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading , roleLoading , ready}
+    const authData = {regWithEmailPass , signInWithEmailPass , user , role , status , loading , roleLoading , ready , signInWithGoogle , signOutGoogle} ;
 
 
     return (

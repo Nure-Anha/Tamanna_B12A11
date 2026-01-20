@@ -47,10 +47,10 @@ const AllUsers = () => {
 
     
     const [page, setPage] = useState(1);       
-            const [limit] = useState(3); 
+            const [limit] = useState(5); 
             const startIndex = (page-1)*limit;
-            const paginationReq = allusers.slice(startIndex, startIndex + limit);
-            const totalPages = Math.ceil(allusers.length / limit);
+            const paginationReq = matched_Status.slice(startIndex, startIndex + limit);
+            const totalPages = Math.ceil(matched_Status.length / limit);
 
 
     return (
