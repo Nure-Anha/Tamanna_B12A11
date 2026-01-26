@@ -1,16 +1,51 @@
-# React + Vite
+Lifedrop- Blood Donation Application is a full-stack MERN application designed to connect blood donors with those in need.
+Live: https://tamanna-b12a11-lifedrop.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+User Roles & Permissions
+Admin: Full access including user management, donation requests, and content management.
+Donor: Register, view donation requests, respond, and manage their own profile.
+Volunteer: Create and manage donation requests; update donation statuses.
 
-Currently, two official plugins are available:
+Authentication
+Registration and login via Email & Password
+Role-based access control with protected routes
+Profile management (view & edit)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Donor Dashboard
+Create, view, edit, and delete donation requests
+Recent donation requests summary on dashboard home
+Pagination and filtering of donation requests by status
 
-## React Compiler
+Admin Dashboard
+Manage all users (block/unblock, assign roles)
+View and manage all donation requests
+Dashboard statistics (total donors, total donations, total funds)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Volunteer Dashboard
+View all donation requests
+Update donation status only
 
-## Expanding the ESLint configuration
+Public Pages
+Home page with banner, featured section, contact form, and footer
+Search donors by blood group, district, and upazila
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+View pending blood donation requests
+Blood Donation Request Details
+Private route to see full details
+Confirm donation to update status from pending to in-progress
+
+Funding Page
+Users can donate funds via Stripe
+Display all contributions in tabular format
+Total funds visible in admin & volunteer dashboards
+
+
+Technologies Used
+Frontend: React.js, Tailwind CSS, React Router
+Backend: Node.js, Express.js, MongoDB
+Authentication: Firebase Authentication
+Payment Integration: Stripe (for donations)
+Deployment: Netlify (Frontend)
+
+Other Libraries: react-hot-toast, framer-motion, swiper
